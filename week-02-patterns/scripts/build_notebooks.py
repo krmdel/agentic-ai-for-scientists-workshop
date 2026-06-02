@@ -1162,9 +1162,12 @@ question --retriever--> top-k chunks --prompt--> Gemini --> grounded answer
 We retrieve three ways — **dense** (FAISS), **sparse** (BM25), **hybrid** (EnsembleRetriever) — then score `hit@5` on a labelled eval set.
 """),
 
-    md("## 0. Setup"),
+    md("""## 0. Setup
+
+> ⚠️ **One-time restart after this install.** This notebook installs FAISS, sentence-transformers and Chroma, which can shift Colab's `numpy` under the running kernel. We pin `numpy==1.26.4` (Colab's ABI) to prevent it — but if the very next cell ever throws `numpy.dtype size changed ... Expected 96 ... got 88`, it just means numpy moved mid-session: do **Runtime -> Restart session**, then run the cells below again (the install is cached, so it's fast). One restart fixes it permanently for the session."""),
 
     code("""%pip install -q \\
+    "numpy==1.26.4" \\
     "google-genai>=1.0" \\
     "langchain==0.3.7" "langchain-google-genai==2.0.11" "langchain-community==0.3.5" \\
     "langchain-text-splitters==0.3.2" "langchain-huggingface==0.1.2" "langchain-chroma==0.1.4" \\
@@ -1544,7 +1547,7 @@ The retrieval *interface* is the same: `retrieve_X(query, k)` returns chunks. Pl
 
     md("## 0. Setup"),
 
-    code("""%pip install -q "elasticsearch==8.15.1" "sentence-transformers==3.3.0" "pypdf==5.1.0" \\
+    code("""%pip install -q "numpy==1.26.4" "elasticsearch==8.15.1" "sentence-transformers==3.3.0" "pypdf==5.1.0" \\
     "pandas==2.2.3" "google-genai>=1.0" python-dotenv requests
 """),
 
