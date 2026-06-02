@@ -35,10 +35,10 @@ python -m pip install --quiet --upgrade pip wheel
 # 3. Install deps (pinned for stability across the workshop)
 echo "    Installing dependencies (this takes ~2 min on first run)"
 pip install --quiet \
-  "anthropic>=0.39.0,<0.50.0" \
+  "google-genai>=1.0" \
   "openai>=1.50.0,<2.0.0" \
   "langchain==0.3.7" \
-  "langchain-anthropic==0.2.4" \
+  "langchain-google-genai==2.0.11" \
   "langchain-openai==0.2.8" \
   "langchain-community==0.3.5" \
   "langchain-text-splitters==0.3.2" \

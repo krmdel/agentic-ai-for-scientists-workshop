@@ -12,7 +12,7 @@
 | Notebook | Open in Colab | What it does |
 |---|---|---|
 | 00 — LangChain in 15 Minutes | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krmdel/agentic-ai-for-scientists-workshop/blob/main/week-02-patterns/notebooks/00_langchain_intro.ipynb) | Warm-up: model wrapper, messages, prompt templates, output parsers, the LCEL `|` pipe, and a first look at `@tool`. The vocabulary every later notebook uses. |
-| 01 — Tool Use & Function Calling | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krmdel/agentic-ai-for-scientists-workshop/blob/main/week-02-patterns/notebooks/01_tool_use.ipynb) | The smallest agent built three ways: hand-rolled loop → Anthropic native tool-use → LangChain **tool-calling agent** — plus **structured output** (Pydantic `with_structured_output`). |
+| 01 — Tool Use & Function Calling | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krmdel/agentic-ai-for-scientists-workshop/blob/main/week-02-patterns/notebooks/01_tool_use.ipynb) | The smallest agent built three ways: hand-rolled loop → Gemini native function-calling → LangChain **tool-calling agent** — plus **structured output** (Pydantic `with_structured_output`). |
 | 02 — ReAct, CoT & ToT | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krmdel/agentic-ai-for-scientists-workshop/blob/main/week-02-patterns/notebooks/02_react_agent.ipynb) | Chain-of-Thought → hand-built ReAct loop → `create_react_agent` → Tree-of-Thoughts → the **function-calling vs ReAct** contrast (who owns tool selection). |
 | 03 — RAG End-to-End | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krmdel/agentic-ai-for-scientists-workshop/blob/main/week-02-patterns/notebooks/03_rag_pipeline.ipynb) | LangChain-native: `PyPDFLoader` → splitter → embeddings → **FAISS + Chroma** → BM25 → `EnsembleRetriever` → compare on 5 questions → citation RAG chain. |
 | 04 — Elasticsearch Appendix (optional) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krmdel/agentic-ai-for-scientists-workshop/blob/main/week-02-patterns/notebooks/04_rag_elasticsearch_appendix.ipynb) | Same RAG pipeline on a real Elastic Cloud trial cluster with native RRF. Homework only — not run in class. |
@@ -31,7 +31,7 @@ Curated companion material — the FC-vs-ReAct reference video, LangChain docs, 
 
 Do this once before the workshop. You can skip everything if you're only watching.
 
-1. **Anthropic API key** — sign up at https://console.anthropic.com, create a key, paste into Colab when prompted. ~$1 of credits covers all four notebooks.
+1. **Google Gemini API key (free)** — get one at https://aistudio.google.com/apikey (no credit card). In Colab, add it as **GOOGLE_API_KEY** under the 🔑 *Secrets* panel (left sidebar). The free tier covers all four notebooks. Full guide: **[API_KEYS.md](API_KEYS.md)**.
 2. *(optional)* **OpenAI API key** — only if you want to swap embeddings to `text-embedding-3-small` instead of the free local model. Skippable.
 3. *(optional)* **Elastic Cloud free trial** — only for Notebook 04. Sign up at https://cloud.elastic.co (14-day trial, no card). Note your `Cloud ID` and create a `Data API key`. Skippable for in-class.
 
@@ -60,7 +60,7 @@ Soft 90-second stretch at the 65-min mark, no formal break.
 git clone https://github.com/krmdel/agentic-ai-for-scientists-workshop.git ~/Projects/agentic-ai-for-scientists-workshop
 cd ~/Projects/agentic-ai-for-scientists-workshop/week-02-patterns
 ./setup.sh                       # creates .venv, installs pinned deps
-cp .env.example .env             # fill in ANTHROPIC_API_KEY at minimum
+cp .env.example .env             # fill in GOOGLE_API_KEY at minimum
 .venv/bin/jupyter lab notebooks/ # opens in browser
 ```
 

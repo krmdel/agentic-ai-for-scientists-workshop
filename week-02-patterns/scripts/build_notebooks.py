@@ -11,7 +11,7 @@ Outputs to ../notebooks/:
     04_rag_elasticsearch_appendix.ipynb
 
 Target stack (classic LangChain 0.3.x line — last series with AgentExecutor +
-create_react_agent before the LangGraph-only v1.0). Provider: Anthropic (Claude).
+create_react_agent before the LangGraph-only v1.0). Provider: Google Gemini (free tier).
 """
 from __future__ import annotations
 
@@ -21,7 +21,7 @@ from pathlib import Path
 OUT_DIR = Path(__file__).resolve().parent.parent / "notebooks"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-MODEL = "claude-sonnet-4-6"  # robust default for live demos; swap to claude-haiku-4-5 to cut cost
+MODEL = "gemini-2.5-flash"  # free-tier Gemini flash model — fast, good tool use, no card needed
 
 
 def md(text: str) -> dict:
@@ -71,16 +71,17 @@ def write(name: str, cells: list[dict]) -> None:
 # Shared key-loading cell (Colab userdata OR local .env). Reused across notebooks.
 KEY_CELL = """import os
 
-# Colab: add ANTHROPIC_API_KEY under the key icon (left sidebar) -> "Secrets".
-# Local: put ANTHROPIC_API_KEY=sk-ant-... in a .env file next to this notebook.
+# Free Gemini API key (no credit card): https://aistudio.google.com/apikey
+# Colab: add GOOGLE_API_KEY under the key icon (left sidebar) -> "Secrets".
+# Local: put GOOGLE_API_KEY=AIza... in a .env file next to this notebook.
 try:
     from google.colab import userdata  # type: ignore
-    os.environ["ANTHROPIC_API_KEY"] = userdata.get("ANTHROPIC_API_KEY")
+    os.environ["GOOGLE_API_KEY"] = userdata.get("GOOGLE_API_KEY")
 except Exception:
     from dotenv import load_dotenv
     load_dotenv()
 
-assert os.environ.get("ANTHROPIC_API_KEY"), "Set ANTHROPIC_API_KEY first (see the comment above)."
+assert os.environ.get("GOOGLE_API_KEY"), "Set GOOGLE_API_KEY first (see the comment above)."
 print("API key loaded.")
 """
 
@@ -101,7 +102,7 @@ NB00 = [
 
     md("## 0. Setup\n\nInstall the two packages we need for the intro, then load your API key."),
 
-    code("""%pip install -q "langchain==0.3.7" "langchain-anthropic==0.2.4" python-dotenv
+    code("""%pip install -q "langchain==0.3.7" "langchain-google-genai==2.0.11" python-dotenv
 """),
 
     code(KEY_CELL),
@@ -110,12 +111,12 @@ NB00 = [
 
 ## 1. The model wrapper
 
-`ChatAnthropic` is a *wrapper* around the Anthropic API. The point of the wrapper: every chat model in LangChain — Anthropic, OpenAI, Gemini — exposes the **same** `.invoke()` method. Swap the class, keep the code.
+`ChatGoogleGenerativeAI` is a *wrapper* around the Gemini API. The point of the wrapper: every chat model in LangChain — Gemini, Anthropic, OpenAI — exposes the **same** `.invoke()` method. Swap the class, keep the code.
 """),
 
-    code(f"""from langchain_anthropic import ChatAnthropic
+    code(f"""from langchain_google_genai import ChatGoogleGenerativeAI
 
-llm = ChatAnthropic(model="{MODEL}", temperature=0)
+llm = ChatGoogleGenerativeAI(model="{MODEL}", temperature=0)
 
 response = llm.invoke("In one sentence, what is an AI agent?")
 print(type(response).__name__)   # AIMessage
@@ -228,7 +229,7 @@ You now have the whole toolbox:
 
 | Piece | Class | One-liner |
 |---|---|---|
-| Model wrapper | `ChatAnthropic` | vendor-neutral `.invoke()` |
+| Model wrapper | `ChatGoogleGenerativeAI` | vendor-neutral `.invoke()` |
 | Messages | `SystemMessage` / `HumanMessage` / `AIMessage` | typed chat turns |
 | Prompt template | `ChatPromptTemplate` | a prompt with `{slots}` |
 | Output parser | `StrOutputParser` | `AIMessage` -> `str` |
@@ -256,7 +257,7 @@ NB01 = [
 We build the same tiny agent **three** times, each less code than the last:
 
 1. **Hand-rolled.** LLM call + a regex + a Python function. No SDK helpers — you see every moving part.
-2. **Anthropic native tool-use.** Same control flow, but the model emits typed `tool_use` blocks so we stop parsing text.
+2. **Gemini native function-calling.** Same control flow, but the model emits typed function-call parts so we stop parsing text.
 3. **LangChain tool-calling agent.** The whole loop collapses to `AgentExecutor.invoke(...)`. This is the **function-calling agent** from the lecture — tool selection is shifted to the model vendor.
 
 Seeing all three back-to-back is the point: when a framework hides the loop, you'll know exactly what it hid.
@@ -264,16 +265,17 @@ Seeing all three back-to-back is the point: when a framework hides the loop, you
 
     md("## 0. Setup"),
 
-    code("""%pip install -q "anthropic>=0.39.0,<0.50.0" \\
-    "langchain==0.3.7" "langchain-anthropic==0.2.4" python-dotenv
+    code("""%pip install -q "google-genai>=1.0" \\
+    "langchain==0.3.7" "langchain-google-genai==2.0.11" python-dotenv
 """),
 
     code(KEY_CELL),
 
     code(f"""import re
-from anthropic import Anthropic
+from google import genai
+from google.genai import types
 
-client = Anthropic()
+client = genai.Client()        # reads GOOGLE_API_KEY from the environment
 MODEL = "{MODEL}"
 
 
@@ -284,11 +286,11 @@ def show(turn: str, content: str) -> None:
 
 
 def as_text(output) -> str:
-    \"\"\"An AgentExecutor result["output"] is a plain string for ReAct, but a list of
-    content blocks for an Anthropic tool-calling agent. Normalise to text for printing.\"\"\"
+    \"\"\"An AgentExecutor result["output"] is a plain string for both ReAct and the
+    Gemini tool-calling agent. Tiny normaliser, kept in case a model returns parts.\"\"\"
     if isinstance(output, str):
         return output
-    return "".join(b.get("text", "") for b in output if isinstance(b, dict))
+    return "".join(getattr(b, "text", "") or "" for b in output)
 
 
 print(f"Ready with model: {{MODEL}}")
@@ -303,6 +305,7 @@ A "tool" is just a function the model can ask you to call. Nothing more.
 
     code("""def calculator(expression: str) -> str:
     \"\"\"Evaluate a basic arithmetic expression and return the result as a string.\"\"\"
+    expression = expression.replace("^", "**")   # models often write ^ for "to the power of"
     if not re.fullmatch(r"[\\d\\s+\\-*/().]+", expression):
         return "ERROR: only basic arithmetic allowed"
     try:
@@ -337,15 +340,17 @@ If you don't need the calculator, just answer directly.\"\"\"
 
 
 def run_manual_loop(user_question: str, max_turns: int = 5) -> str:
-    messages = [{"role": "user", "content": user_question}]
+    contents = [types.Content(role="user", parts=[types.Part(text=user_question)])]
     show("USER", user_question)
 
+    config = types.GenerateContentConfig(
+        system_instruction=SYSTEM_PROMPT_MANUAL, max_output_tokens=1024)
+
     for turn in range(max_turns):
-        response = client.messages.create(
-            model=MODEL, max_tokens=1024,
-            system=SYSTEM_PROMPT_MANUAL, messages=messages,
+        response = client.models.generate_content(
+            model=MODEL, contents=contents, config=config,
         )
-        assistant_text = response.content[0].text
+        assistant_text = response.text
         show(f"ASSISTANT (turn {turn + 1})", assistant_text)
 
         # Parse the text ourselves to find a tool call
@@ -357,12 +362,11 @@ def run_manual_loop(user_question: str, max_turns: int = 5) -> str:
         result = calculator(expression)
         show("TOOL RESULT", f"{expression} = {result}")
 
-        # Feed the tool result back and let the model continue
-        messages.append({"role": "assistant", "content": assistant_text})
-        messages.append({
-            "role": "user",
-            "content": f"Tool result: {result}\\n\\nContinue your answer.",
-        })
+        # Feed the tool result back and let the model continue.
+        # Gemini's roles are "user" and "model" (not "assistant").
+        contents.append(types.Content(role="model", parts=[types.Part(text=assistant_text)]))
+        contents.append(types.Content(role="user",
+            parts=[types.Part(text=f"Tool result: {result}\\n\\nContinue your answer.")]))
 
     return "Max turns reached without final answer."
 
@@ -387,62 +391,62 @@ That is the whole pattern: **the loop is a Python `for`, the tool is a function,
 
 ---
 
-## 3. Same thing with Anthropic's native tool-use API
+## 3. Same thing with Gemini's native function-calling API
 
-The hand-rolled version works but is brittle (regex parsing, prompt instructions, injection risk). Anthropic's typed `tool_use` blocks give the same control flow with parsing handled for us.
+The hand-rolled version works but is brittle (regex parsing, prompt instructions, injection risk). Gemini's typed function-call parts give the same control flow with parsing handled for us.
 """),
 
-    code("""# Tool schema (JSON Schema). The model sees this and emits typed tool_use blocks.
-TOOLS = [
-    {
-        "name": "calculator",
-        "description": "Evaluate a basic arithmetic expression. Use whenever a calculation is needed.",
-        "input_schema": {
-            "type": "object",
-            "properties": {
-                "expression": {
-                    "type": "string",
-                    "description": "A math expression using digits, +, -, *, /, parens, dots.",
-                },
-            },
-            "required": ["expression"],
+    code("""# Tool schema as a Gemini FunctionDeclaration. The model sees this and emits
+# typed function-call parts instead of free text we have to regex.
+calculator_decl = types.FunctionDeclaration(
+    name="calculator",
+    description="Evaluate a basic arithmetic expression. Use whenever a calculation is needed.",
+    parameters=types.Schema(
+        type="OBJECT",
+        properties={
+            "expression": types.Schema(
+                type="STRING",
+                description="A math expression using digits, +, -, *, /, parens, dots.",
+            ),
         },
-    },
-]
+        required=["expression"],
+    ),
+)
+TOOLS = [types.Tool(function_declarations=[calculator_decl])]
 
 # Map name -> Python callable. This is your "tool registry".
 TOOL_REGISTRY = {"calculator": calculator}
 """),
 
     code("""def run_native_loop(user_question: str, max_turns: int = 5) -> str:
-    messages = [{"role": "user", "content": user_question}]
+    contents = [types.Content(role="user", parts=[types.Part(text=user_question)])]
     show("USER", user_question)
+    config = types.GenerateContentConfig(tools=TOOLS)
 
     for turn in range(max_turns):
-        response = client.messages.create(
-            model=MODEL, max_tokens=1024, tools=TOOLS, messages=messages,
+        response = client.models.generate_content(
+            model=MODEL, contents=contents, config=config,
         )
-        blocks = response.content
-        text_blocks = [b.text for b in blocks if b.type == "text"]
-        tool_uses = [b for b in blocks if b.type == "tool_use"]
+        parts = response.candidates[0].content.parts
+        text_parts = [p.text for p in parts if getattr(p, "text", None)]
+        calls = [p.function_call for p in parts if getattr(p, "function_call", None)]
 
-        if text_blocks:
-            show(f"ASSISTANT (turn {turn + 1})", "\\n".join(text_blocks))
-        if not tool_uses:
-            return "\\n".join(text_blocks)
+        if text_parts:
+            show(f"ASSISTANT (turn {turn + 1})", "\\n".join(text_parts))
+        if not calls:
+            return "\\n".join(text_parts)
 
-        # Append the assistant's full turn, then run each requested tool
-        messages.append({"role": "assistant", "content": blocks})
-        tool_results = []
-        for tu in tool_uses:
-            result = TOOL_REGISTRY[tu.name](**tu.input)
-            show(f"TOOL {tu.name}({tu.input})", str(result))
-            tool_results.append({
-                "type": "tool_result",
-                "tool_use_id": tu.id,
-                "content": str(result),
-            })
-        messages.append({"role": "user", "content": tool_results})
+        # Append the model's full turn, then run each requested function and
+        # send the results back as function_response parts.
+        contents.append(types.Content(role="model", parts=parts))
+        result_parts = []
+        for call in calls:
+            args = dict(call.args)
+            result = TOOL_REGISTRY[call.name](**args)
+            show(f"TOOL {call.name}({args})", str(result))
+            result_parts.append(types.Part.from_function_response(
+                name=call.name, response={"result": str(result)}))
+        contents.append(types.Content(role="user", parts=result_parts))
 
     return "Max turns reached."
 
@@ -457,10 +461,10 @@ print(final)
 
     md("""**What changed?**
 
-| | Hand-rolled | Native tool-use |
+| | Hand-rolled | Native function-calling |
 |---|---|---|
 | Tool definition | Python function + prompt instructions | Python function + JSON schema |
-| Parsing | Regex on response text | SDK gives you typed `tool_use` blocks |
+| Parsing | Regex on response text | SDK gives you typed function-call parts |
 | Loop | `for` loop | same `for` loop |
 | Injection risk | Higher (model could fake a `CALL:` mid-text) | Lower (tool blocks are structurally separate) |
 | Type safety | None | JSON Schema validates inputs |
@@ -475,11 +479,11 @@ Now we let LangChain own the loop. This is the **function-calling agent**: we ha
 """),
 
     code("""from langchain.agents import create_tool_calling_agent, AgentExecutor
-from langchain_anthropic import ChatAnthropic
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.tools import tool
 
-llm = ChatAnthropic(model=MODEL, temperature=0)
+llm = ChatGoogleGenerativeAI(model=MODEL, temperature=0)
 
 
 # @tool reads the type hints + docstring to build the schema automatically.
@@ -515,7 +519,7 @@ result = executor.invoke({
              "doubled in size every hour, how big after 4 hours?",
 })
 print("\\n=== FINAL ANSWER ===")
-print(as_text(result["output"]))   # tool-calling output is a list of blocks; as_text flattens it
+print(as_text(result["output"]))   # Gemini's tool-calling agent returns a plain string
 """),
 
     md("""Watch the `verbose=True` trace: the agent called `get_weather('Singapore')` **and** `calc('5 * 2 ** 4')`, then composed both results into one answer — and we never wrote a loop. That loop is the same `for` from sections 2 and 3, now living inside `AgentExecutor.invoke`.
@@ -590,27 +594,28 @@ NB02 = [
 
     md("## 0. Setup"),
 
-    code("""%pip install -q "anthropic>=0.39.0,<0.50.0" \\
-    "langchain==0.3.7" "langchain-anthropic==0.2.4" "langchain-community==0.3.5" python-dotenv
+    code("""%pip install -q "google-genai>=1.0" \\
+    "langchain==0.3.7" "langchain-google-genai==2.0.11" "langchain-community==0.3.5" python-dotenv
 """),
 
     code(KEY_CELL),
 
     code(f"""import re
-from anthropic import Anthropic
-from langchain_anthropic import ChatAnthropic
+from google import genai
+from google.genai import types
+from langchain_google_genai import ChatGoogleGenerativeAI
 
-client = Anthropic()
-llm = ChatAnthropic(model="{MODEL}", temperature=0)
+client = genai.Client()                                        # raw SDK, for the hand-built ReAct loop
+llm = ChatGoogleGenerativeAI(model="{MODEL}", temperature=0)   # LangChain wrapper, for create_react_agent etc.
 MODEL = "{MODEL}"
 
 
 def as_text(output) -> str:
-    \"\"\"AgentExecutor output is a string for ReAct but a list of content blocks for a
-    tool-calling agent on Anthropic. Normalise to text for clean printing.\"\"\"
+    \"\"\"AgentExecutor output is a plain string for both ReAct and Gemini's
+    tool-calling agent. Tiny normaliser, kept for safety.\"\"\"
     if isinstance(output, str):
         return output
-    return "".join(b.get("text", "") for b in output if isinstance(b, dict))
+    return "".join(getattr(b, "text", "") or "" for b in output)
 
 
 print(f"Ready with model: {{MODEL}}")
@@ -694,6 +699,7 @@ Mock implementations so the notebook runs offline and the trace is reproducible.
 
 
 def calculator(expression: str) -> str:
+    expression = expression.replace("^", "**")   # models often write ^ for "to the power of"
     if not re.fullmatch(r"[\\d\\s+\\-*/().]+", expression):
         return "ERROR: only basic arithmetic allowed"
     try:
@@ -765,12 +771,18 @@ def run_react(question: str, max_iterations: int = 6) -> str:
         )
         # stop_sequences halts the model right after it writes "Action Input",
         # BEFORE it hallucinates its own Observation. WE supply the observation.
-        response = client.messages.create(
-            model=MODEL, max_tokens=1024,
-            stop_sequences=["\\nObservation:"],
-            messages=[{"role": "user", "content": prompt}],
+        # thinking_budget=0 stops gemini-2.5-flash from adding hidden reasoning
+        # that would otherwise swallow the stop sequence and muddy the trace.
+        response = client.models.generate_content(
+            model=MODEL,
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                max_output_tokens=1024,
+                stop_sequences=["\\nObservation:"],
+                thinking_config=types.ThinkingConfig(thinking_budget=0),
+            ),
         )
-        text = response.content[0].text
+        text = response.text
         print(f"\\n--- STEP {step + 1} ---")
         print(text)
 
@@ -917,7 +929,7 @@ We show one level of the search machinery on the "Game of 24" (use the four numb
 
     code("""NUMBERS = [4, 9, 10, 13]
 
-def propose_first_steps(numbers, n=5):
+def propose_first_steps(numbers, n=3):
     \"\"\"Ask the model to PROPOSE several candidate first moves (the 'branching' step).\"\"\"
     msg = (f"Game of 24. Numbers: {numbers}. Propose {n} DIFFERENT promising first moves. "
            f"A move combines two of the numbers with + - * or /, leaving a new list of 3 numbers. "
@@ -1003,7 +1015,7 @@ print("\\n=== Tool-calling answer ===\\n", tc_out)
 
 | | ReAct agent | Tool-calling (function-calling) agent |
 |---|---|---|
-| How a tool is chosen | The **ReAct prompt** turns the LLM into a reasoning engine; it writes `Action: / Action Input:` as **text** | The **model vendor's** native function-calling picks the tool + arguments as a structured `tool_use` block |
+| How a tool is chosen | The **ReAct prompt** turns the LLM into a reasoning engine; it writes `Action: / Action Input:` as **text** | The **model vendor's** native function-calling picks the tool + arguments as a structured function-call part |
 | Who owns tool selection | **You** — it lives in a prompt you can read and edit | **The vendor** — fine-tuned into the model, hidden from you |
 | Parsing | Regex on `Action:` lines (brittle; needs `handle_parsing_errors`) | Structured blocks — no parsing |
 | Control / flexibility | **High** — tweak the prompt, change the format, inspect every Thought | **Lower** — you can't see or alter the selection logic |
@@ -1049,7 +1061,7 @@ PDFs --PyPDFLoader-->  Documents
       --HuggingFaceEmbeddings-->  vectors
       --FAISS / Chroma-->  vector store --.as_retriever()--> retriever
                                                                  |
-question --retriever--> top-k chunks --prompt--> ChatAnthropic --> grounded answer
+question --retriever--> top-k chunks --prompt--> Gemini --> grounded answer
 ```
 
 We retrieve three ways — **dense** (FAISS), **sparse** (BM25), **hybrid** (EnsembleRetriever) — then score `hit@5` on a labelled eval set.
@@ -1058,8 +1070,8 @@ We retrieve three ways — **dense** (FAISS), **sparse** (BM25), **hybrid** (Ens
     md("## 0. Setup"),
 
     code("""%pip install -q \\
-    "anthropic>=0.39.0,<0.50.0" \\
-    "langchain==0.3.7" "langchain-anthropic==0.2.4" "langchain-community==0.3.5" \\
+    "google-genai>=1.0" \\
+    "langchain==0.3.7" "langchain-google-genai==2.0.11" "langchain-community==0.3.5" \\
     "langchain-text-splitters==0.3.2" "langchain-huggingface==0.1.2" "langchain-chroma==0.1.4" \\
     "faiss-cpu==1.9.0" "rank-bm25==0.2.2" "sentence-transformers==3.3.0" \\
     "pypdf==5.1.0" "pandas==2.2.3" python-dotenv requests
@@ -1164,7 +1176,7 @@ print(chunks[0].page_content[:250], "...")
 
 ## 4. Embeddings — a free local model
 
-`all-MiniLM-L6-v2` is 90 MB, runs on CPU in Colab's free tier, and is plenty for a 5-paper demo. `HuggingFaceEmbeddings` (from `langchain_huggingface`) wraps it in LangChain's embedding interface so any vector store can use it. Production swap: `text-embedding-3-small` (OpenAI) or `voyage-3` (Anthropic-recommended).
+`all-MiniLM-L6-v2` is 90 MB, runs on CPU in Colab's free tier, and is plenty for a 5-paper demo. `HuggingFaceEmbeddings` (from `langchain_huggingface`) wraps it in LangChain's embedding interface so any vector store can use it. Production swap: `text-embedding-3-small` (OpenAI) or `text-embedding-004` (Google).
 """),
 
     code("""from langchain_huggingface import HuggingFaceEmbeddings
@@ -1339,12 +1351,12 @@ for col in df.columns:
 Retrieval done — now *use* it. The LCEL pipe stuffs the retrieved chunks into the prompt's `{context}`, the model answers from them, and we ask it to **cite the chunk_id** behind every claim.
 """),
 
-    code("""from langchain_anthropic import ChatAnthropic
+    code("""from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
 
-llm = ChatAnthropic(model=MODEL, temperature=0)
+llm = ChatGoogleGenerativeAI(model=MODEL, temperature=0)
 
 RAG_PROMPT = ChatPromptTemplate.from_template(\"\"\"You are a research assistant. Answer the question using ONLY the context below. If the context doesn't contain the answer, say so — do not invent. Cite the [chunk_id] in brackets after every claim.
 
@@ -1438,7 +1450,7 @@ The retrieval *interface* is the same: `retrieve_X(query, k)` returns chunks. Pl
     md("## 0. Setup"),
 
     code("""%pip install -q "elasticsearch==8.15.1" "sentence-transformers==3.3.0" "pypdf==5.1.0" \\
-    "pandas==2.2.3" "anthropic>=0.39.0,<0.50.0" python-dotenv requests
+    "pandas==2.2.3" "google-genai>=1.0" python-dotenv requests
 """),
 
     code("""import os, json, re

@@ -23,7 +23,7 @@ Curated companion material for **Week 2: Agentic Patterns** — the agentic ladd
 ## 📄 Official documentation
 
 - **[LangChain — Python docs](https://docs.langchain.com/oss/python/langchain/overview)** — the framework reference: models, prompts, output parsers, LCEL, agents, retrievers.
-- **[Anthropic — Tool use (function calling)](https://docs.claude.com/en/docs/build-with-claude/tool-use/overview)** — how the model requests a tool call and you return the result. The mechanism under Notebook 01.
+- **[Gemini — Function calling](https://ai.google.dev/gemini-api/docs/function-calling)** — how the model requests a tool call and you return the result. The mechanism under Notebook 01.
 - **[LangSmith](https://docs.langchain.com/langsmith)** — tracing + observability for agents. Set two env vars and watch every Thought / Action / tool call step-by-step (the "From demo to production" slide).
 - **[Tavily](https://docs.tavily.com/)** — a hosted search API built for agents — the real-tool drop-in for the mocked `web_search` in the notebooks.
 - **[Pydantic](https://docs.pydantic.dev/latest/)** — the schema library behind structured output (`with_structured_output`) in Notebook 01.

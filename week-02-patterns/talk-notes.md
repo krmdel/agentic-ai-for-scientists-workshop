@@ -191,7 +191,7 @@ Click to the trace slide.
 
 **"LangChain implements the ladder."** This slide is the payoff of Part 2.
 
-> *"Read this table left to right — it's the whole day in one grid. L0 by hand was client-dot-messages-dot-create; in LangChain it's ChatAnthropic-dot-invoke. L1 was our for-loop and regex; in LangChain it's create_tool_calling_agent. L2 ReAct was our prompt and parser; it's create_react_agent. And RAG memory — manual chunk-embed-search — becomes loaders, splitters, vector stores, retrievers. We pin the classic LangChain 0.3 line, the last one with AgentExecutor. The newer LangGraph runtime is next week's reveal."*
+> *"Read this table left to right — it's the whole day in one grid. L0 by hand was client-dot-models-dot-generate-content; in LangChain it's ChatGoogleGenerativeAI-dot-invoke. L1 was our for-loop and regex; in LangChain it's create_tool_calling_agent. L2 ReAct was our prompt and parser; it's create_react_agent. And RAG memory — manual chunk-embed-search — becomes loaders, splitters, vector stores, retrievers. We pin the classic LangChain 0.3 line, the last one with AgentExecutor. The newer LangGraph runtime is next week's reveal."*
 
 **"Structured output" slide.**
 
@@ -209,7 +209,7 @@ Click to the trace slide.
 
 Open the **Notebook 00 tab**. Setup cells already run.
 
-1. **Model wrapper cell** — *"ChatAnthropic dot invoke. Notice it returns an AIMessage OBJECT, not a string — the text is in dot-content. That object-not-string detail matters the moment we start chaining."*
+1. **Model wrapper cell** — *"ChatGoogleGenerativeAI dot invoke. Notice it returns an AIMessage OBJECT, not a string — the text is in dot-content. That object-not-string detail matters the moment we start chaining."*
 2. **Messages cell** — *"System sets behaviour, Human is the user turn. Same idea as the raw API, typed."*
 3. **Prompt template cell** — *"A prompt with curly-brace slots you fill at call time."*
 4. **LCEL chain cell** — the key one. *"prompt pipe llm pipe parser. The StrOutputParser pulls the text out so the chain returns a plain string. This three-piece chain is the spine of everything — a RAG chain is this with a retriever bolted on the front; an agent is this wrapped in a loop."*
@@ -245,11 +245,11 @@ Switch to the **Notebook 02 tab**. This is the richest notebook. As you scroll, 
 - **"Why pin LangChain 0.3 and not the latest?"** 0.3 is the last line with the classic AgentExecutor + create_react_agent. The newer 1.0 pushes everything to LangGraph, which is Week 3. Pinning keeps today stable and the abstractions readable.
 - **"LangChain vs LlamaIndex vs Haystack vs DSPy?"** LangChain is the broadest and most common; LlamaIndex is RAG-first; Haystack is pipeline-first; DSPy treats prompts as programs you optimise. Pick one, learn the loop underneath — it's the same everywhere.
 - **"`create_react_agent` raised an output-parser error — why?"** The model didn't follow the Action/Action-Input format. `handle_parsing_errors=True` feeds it a 'fix your format' nudge instead of crashing.
-- **"Is the tool-calling output a string?"** On Anthropic it comes back as a list of content blocks; the notebook's `as_text()` helper flattens it. A small but real gotcha.
+- **"Is the tool-calling output a string?"** On Gemini the tool-calling agent returns a plain string; the notebook keeps a tiny `as_text()` helper as a safe no-op in case a model ever returns content parts.
 - **"How is structured output different from a tool?"** Same function-calling mechanism, opposite target. A tool's schema describes a *function to call*; `with_structured_output`'s schema describes the *answer's shape*. The model fills one or the other. Use structured output whenever the result feeds code that expects fixed fields.
 - **"Is the Pydantic output guaranteed valid?"** The model is constrained to the schema and LangChain validates against the Pydantic model — if it can't conform, the call errors rather than handing you garbage. Far safer than 'respond in JSON' + a try/except.
 - **"Do we need a Tavily / LangSmith key today?"** No. The search tool is mocked so the notebooks run offline, and the LangSmith snippet is commented out. Both are one-liners you enable in production — shown so you know they exist.
-- **"Cost of a run?"** Each turn is one full LLM call. These notebooks on Sonnet 4.6 are a few cents total. Swap MODEL to claude-haiku-4-5 to cut it ~10x.
+- **"Cost of a run?"** Each turn is one full LLM call — and these run on **Gemini's free tier**, so the whole session is free. (Free tier is rate-limited, so a heavy "Run all" may pause between calls; cell-by-cell live is smooth.)
 
 ---
 
@@ -340,7 +340,7 @@ One-sentence slide.
 ## Pre-stage prep (day-of, ~30 min before)
 
 - [ ] **Four** Colab tabs open (00, 01, 02, 03), each on the first cell, all setup cells **already run** (saves 60–90s/notebook on stage). Tab 5 = Notebook 04 only if someone asks.
-- [ ] `ANTHROPIC_API_KEY` set in each Colab via `userdata`; verify the setup cell prints **"Ready with model: claude-sonnet-4-6"**
+- [ ] `GOOGLE_API_KEY` set in each Colab via `userdata`; verify the setup cell prints **"Ready with model: gemini-2.5-flash"**
 - [ ] Notebook 03: corpus PDFs downloaded **and** embeddings cell already run (don't make the room watch a download or a 676-chunk encode)
 - [ ] Slides open in a **separate window** from the notebook tabs — never alt-tab between them
 - [ ] Backup screen-recording of each notebook in case a cell fails live

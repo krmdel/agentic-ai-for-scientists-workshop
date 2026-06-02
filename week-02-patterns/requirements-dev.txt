@@ -1,8 +1,8 @@
 # Local end-to-end execution env (Python 3.11). Mirrors notebook %pip pins.
 # Classic LangChain 0.3.x line — last series with AgentExecutor + create_react_agent.
-anthropic>=0.39.0,<0.50.0
+google-genai>=1.0
 langchain==0.3.7
-langchain-anthropic==0.2.4
+langchain-google-genai==2.0.11
 langchain-community==0.3.5
 langchain-text-splitters==0.3.2
 langchain-chroma==0.1.4
