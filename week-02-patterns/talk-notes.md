@@ -1,6 +1,6 @@
 # Week 2 — Talk Notes
 
-**Format:** part-by-part speaker notes plus backup Q&A. Read top-to-bottom; it mirrors `slides.md` slide order.
+**Format:** part-by-part speaker notes plus backup Q&A. Read top-to-bottom; it mirrors `slides/slides.md` slide order.
 
 **The arc in one line:** open the box (why LLMs work) → climb the ladder (bare model → tools → reasoning) → pick up LangChain → give it memory (RAG). The notebooks are clustered after the LangChain intro, because every notebook uses LangChain.
 
