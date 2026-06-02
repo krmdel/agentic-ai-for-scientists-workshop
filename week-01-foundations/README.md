@@ -6,10 +6,11 @@
 
 ## Slides
 
-- **Final deck (hand-edited):** [`slides/agentic-ai-workshop-week1.pptx`](slides/agentic-ai-workshop-week1.pptx) · [`agentic-ai-workshop-week1.pdf`](slides/agentic-ai-workshop-week1.pdf) — the version used in the workshop. PPTX is Google-Slides-compatible (macOS internal font references rewritten to Helvetica Neue so it renders correctly on import).
-- **Google Drive:** [Week 01 folder ↗](https://drive.google.com/drive/folders/18H1ERTJ4yJIiTlpOGSdB4saM-vI5XJuT) — holds the same `agentic-ai-workshop-week1.pptx` + `agentic-ai-workshop-week1.pdf`. Right-click the `.pptx` → **Open with → Google Slides** for a browser-editable converted copy in the same folder.
-- **Marp source:** [`slides/slides-v2.{md,pdf,pptx}`](slides/) — pre-edit Marp build retained for regeneration.
-- **Updating slides:** Folder link is stable across updates. When you replace the deck, re-upload to the same Drive folder (drag-and-drop or replace via Drive Desktop sync). The link in this README does not need to change.
+**Final deck:** [`slides/agentic-ai-workshop-week1.pptx`](slides/agentic-ai-workshop-week1.pptx) · [`slides/agentic-ai-workshop-week1.pdf`](slides/agentic-ai-workshop-week1.pdf) — the version used in the workshop. The PPTX is Google-Slides-compatible (macOS internal font references rewritten to Helvetica Neue so it imports cleanly → **Open with → Google Slides** for a browser-editable copy).
+
+## Resources
+
+Curated companion material — videos, official docs, and reading for this week: **[`resources.md`](resources.md)**.
 
 ## What's in this folder
 
@@ -22,12 +23,10 @@ week-01-foundations/
 ├── PORTABILITY.md                     ← (Legacy — pre-repo-split portability notes)
 ├── WORKSHOP-DESCRIPTION.md            ← Original brief description (kept for reference)
 ├── supabase-schema.sql                ← DB schema for the live build
-├── slides/                            ← Marp deck + exports
-│   ├── slides-v2.md                   ← Current source (May 15 v2 + May 19 fact-check)
-│   ├── slides-v2.pdf
-│   ├── slides-v2.pptx
-│   ├── slides.md                      ← Original v1 (May 12)
-│   └── slides.{pdf,pptx}
+├── slides/                            ← Final workshop deck
+│   ├── agentic-ai-workshop-week1.pptx
+│   └── agentic-ai-workshop-week1.pdf
+├── resources.md                       ← Curated videos, docs & reading for Week 1
 ├── dashboard-project/                 ← Drop-in for Organon's projects/briefs/agentic-ai-workshop/
 │   ├── papers/                        ← 20 real PubMed papers as paperclip-*.json
 │   ├── hypotheses/                    ← hyp-20260519-…/ + personas.json
@@ -64,7 +63,7 @@ week-01-foundations/
 
 | Block | Min | What | Lives in |
 |---|---|---|---|
-| 0. Hook + roadmap | 5 | Two arcs converged in 2024 | `slides/slides-v2.{pdf,pptx}` slides 1–5 |
+| 0. Hook + roadmap | 5 | Two arcs converged in 2024 | `slides/agentic-ai-workshop-week1.pdf` slides 1–5 |
 | 1. History | 12 | Jacquard → Ada → assembly → compilers → Python → AI milestones → Transformer → ChatGPT → 2024 | slides 6–18 |
 | 2. Agent atoms | 10 | Memory, identity, tools, learnings as real files on disk | slides 19–22 |
 | 3. Vibe coding | 8 | Bold opinion + honest caveats | slides 23–24 |
@@ -85,7 +84,7 @@ Figure: bone marrow stress response (`fig-20260519-9a4a07`) — IG% spillover, n
 The four scripts in `scripts/` produce everything in `dashboard-project/` deterministically (except the figure — Gemini outputs vary slightly each run).
 
 ```bash
-cd ~/Projects/agentic-ai-workshop/week-01-foundations
+cd ~/Projects/agentic-ai-for-scientists-workshop/week-01-foundations
 python3 scripts/_build_demo.py            # papers + hypothesis + cohort + manuscript + runs
 python3 scripts/_build_vault.py           # obsidian-vault/
 

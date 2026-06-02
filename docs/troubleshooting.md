@@ -5,7 +5,7 @@
 Most common cause: symlinks didn't get created. Re-run `setup.sh`:
 
 ```bash
-cd ~/Projects/agentic-ai-workshop
+cd ~/Projects/agentic-ai-for-scientists-workshop
 ./setup.sh
 ```
 
@@ -63,13 +63,13 @@ Open the graph view → click the gear icon (top-right of the graph panel) → *
 
 ```bash
 # Verify the config file:
-cat ~/Projects/agentic-ai-workshop/week-01-foundations/obsidian-vault/.obsidian/graph.json | grep colorGroups
+cat ~/Projects/agentic-ai-for-scientists-workshop/week-01-foundations/obsidian-vault/.obsidian/graph.json | grep colorGroups
 ```
 
 If `.obsidian/graph.json` is missing, run `_build_vault.py` again:
 
 ```bash
-python3 ~/Projects/agentic-ai-workshop/week-01-foundations/scripts/_build_vault.py
+python3 ~/Projects/agentic-ai-for-scientists-workshop/week-01-foundations/scripts/_build_vault.py
 ```
 
 ## Symlinks broken after renaming or moving the workshop repo
@@ -110,6 +110,6 @@ PORT=8770 npm run dev
 
 ## Still stuck
 
-- Workshop deck issues → open the slide deck source in `week-01-foundations/slides/slides-v2.md` and search for the relevant section.
+- Workshop deck → `week-01-foundations/slides/agentic-ai-workshop-week1.pdf` (or the `.pptx`).
 - Organon issues → see https://github.com/krmdel/organon and the README there.
-- Claude Code issues → https://docs.anthropic.com/en/docs/claude-code/ (run `/help` inside Claude Code).
+- Claude Code issues → https://code.claude.com/docs/en/overview (run `/help` inside Claude Code).

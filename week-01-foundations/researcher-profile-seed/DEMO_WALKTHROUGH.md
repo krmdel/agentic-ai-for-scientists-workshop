@@ -4,6 +4,13 @@ Step-by-step script for the **live demo** in Block 5 of Week 1. Total run time
 on stage: **3–4 minutes**. Read this once before the talk; you won't reference
 it live.
 
+> **Note for the public repo.** This walkthrough was written for the instructor's
+> own profile seed, so specific filenames below (e.g. `cv-kerem-delikoyun.md`,
+> `research-statement-*.docx`, `rt-had-paper.pdf`) are **examples**. Those
+> personal documents are not shipped here — add *your own* CV / statements /
+> papers to [`../researcher-profile-seed/`](./) and you'll see the equivalent of
+> your own files after `setup.sh`. The flow is identical.
+
 ## Dry-run before the workshop — pick one of two paths
 
 You should run the full demo end-to-end at least once before going live.
@@ -22,7 +29,7 @@ cd ~/Projects/organon-demo && bash scripts/install.sh
 
 # 2. Seed it via the workshop setup, targeting the isolated clone
 ORGANON_ROOT=~/Projects/organon-demo \
-  bash ~/Projects/agentic-ai-workshop/setup.sh
+  bash ~/Projects/agentic-ai-for-scientists-workshop/setup.sh
 
 # 3. Run /lets-go from inside the isolated clone
 cd ~/Projects/organon-demo && claude
@@ -52,7 +59,7 @@ restore.
 cp ~/Projects/organon/context/.lets-go-onboarded /tmp/lgmark-backup 2>/dev/null || true
 
 # Run the demo flow
-bash ~/Projects/agentic-ai-workshop/setup.sh
+bash ~/Projects/agentic-ai-for-scientists-workshop/setup.sh
 cd ~/Projects/organon && claude
 # /lets-go → say "ready" when prompted
 
@@ -79,7 +86,7 @@ On the demo laptop:
 
 ```bash
 # 1. Workshop repo cloned and set up
-cd ~/Projects/agentic-ai-workshop
+cd ~/Projects/agentic-ai-for-scientists-workshop
 git pull
 ./setup.sh
 
@@ -187,7 +194,7 @@ Browse to `http://localhost:8769`. Select "Agentic Ai Workshop" project. Show:
 ### 8. Open Obsidian
 ```bash
 # Already configured to point at the workshop vault
-open -a Obsidian ~/Projects/agentic-ai-workshop/week-01-foundations/obsidian-vault/
+open -a Obsidian ~/Projects/agentic-ai-for-scientists-workshop/week-01-foundations/obsidian-vault/
 ```
 
 Press **Cmd+G** for the graph view. Show the 43 cross-linked notes and the 8 colour-coded folders.
@@ -201,8 +208,8 @@ Press **Cmd+G** for the graph view. Show the 43 cross-linked notes and the 8 col
 | Symptom | Likely cause | Fix |
 |---|---|---|
 | `/lets-go` says "returning mode" | Marker file exists | `rm ~/Projects/organon/context/.lets-go-onboarded` and retry |
-| Agent doesn't see seeded files | `research_artifacts/` empty | `bash ~/Projects/agentic-ai-workshop/setup.sh` to re-seed |
-| Dashboard shows empty sections | Symlinks broken | `bash ~/Projects/agentic-ai-workshop/setup.sh` to re-link |
+| Agent doesn't see seeded files | `research_artifacts/` empty | `bash ~/Projects/agentic-ai-for-scientists-workshop/setup.sh` to re-seed |
+| Dashboard shows empty sections | Symlinks broken | `bash ~/Projects/agentic-ai-for-scientists-workshop/setup.sh` to re-link |
 | Obsidian graph view empty | Wrong vault opened | Re-open the workshop's `obsidian-vault/` folder, not your personal one |
 
 ## Dry-run checklist (do once before the workshop)

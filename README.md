@@ -56,7 +56,7 @@ Each week folder is self-contained: deck, scripts, demo project, and notes.
 - The 200-year **abstraction staircase** and the 80-year **AI road** converging at natural language.
 - **Claude Code** and its primitives (`CLAUDE.md`, tools, skills, sub-agents, MCP, hooks).
 - **Organon** — an agentic OS for scientists; memory, identity, and skills as plain files on disk.
-- A live research-dashboard demo: a literature library, a 4-persona hypothesis critique, a **100-patient synthetic cohort** with an analysis script, a mechanism figure, a 6-section manuscript draft, and a 45-note Obsidian vault.
+- A live research-dashboard demo: a literature library, a 4-persona hypothesis critique, a **100-patient synthetic cohort** with an analysis script, a mechanism figure, a 6-section manuscript draft, and a 43-note Obsidian vault.
 
 See [week-01-foundations/README.md](week-01-foundations/README.md).
 

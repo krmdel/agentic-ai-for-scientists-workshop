@@ -89,12 +89,8 @@ link_specs=(
   "idea-inbox-starter  $WEEK/idea-inbox-starter"
   "assets              $WEEK/assets"
   "scripts             $WEEK/scripts"
-  "slides-v2.md        $WEEK/slides/slides-v2.md"
-  "slides-v2.pdf       $WEEK/slides/slides-v2.pdf"
-  "slides-v2.pptx      $WEEK/slides/slides-v2.pptx"
-  "slides.md           $WEEK/slides/slides.md"
-  "slides.pdf          $WEEK/slides/slides.pdf"
-  "slides.pptx         $WEEK/slides/slides.pptx"
+  "agentic-ai-workshop-week1.pptx  $WEEK/slides/agentic-ai-workshop-week1.pptx"
+  "agentic-ai-workshop-week1.pdf   $WEEK/slides/agentic-ai-workshop-week1.pdf"
 )
 
 count=0
@@ -144,22 +140,24 @@ else
     warn "$RA already has user content — not seeding."
     warn "Move existing files aside and re-run if you want the demo seed."
   else
-    # Flat copy: /lets-go ingests top-level files only.
-    cp "$SEED_DIR/cv/cv.md"                                  "$RA/cv-kerem-delikoyun.md"
-    cp "$SEED_DIR/cv/cv-kerem-delikoyun-website.docx"        "$RA/cv-kerem-delikoyun.docx"
-    cp "$SEED_DIR/cv/linkedin-profile.pdf"                   "$RA/linkedin-profile.pdf"
-    cp "$SEED_DIR/research-statements/research_statement-1.docx" "$RA/research-statement-1.docx"
-    cp "$SEED_DIR/research-statements/research_statement-2.docx" "$RA/research-statement-2.docx"
-    cp "$SEED_DIR/research-statements/research_statement-3.docx" "$RA/research-statement-3.docx"
-    cp "$SEED_DIR/research-statements/research_statement-4.docx" "$RA/research-statement-4.docx"
-    cp "$SEED_DIR/publications/rt-had.pdf"                   "$RA/rt-had-paper.pdf"
-    cp "$SEED_DIR/publications/triagent.pdf"                 "$RA/triagent-paper.pdf"
-    cp "$SEED_DIR/publications/article-digest.md"            "$RA/article-digest.md"
-    cp "$SEED_DIR/notes.md"                                  "$RA/kerem-research-notes.md"
-    cp "$SEED_DIR/links.md"                                  "$RA/kerem-academic-links.md"
+    # Flat-copy any seed documents present (/lets-go ingests top-level files only).
+    # The public repo ships NO personal documents — drop your own CV / research
+    # statements / papers into researcher-profile-seed/{cv,research-statements,
+    # publications}/ to reproduce the profile-seeding demo with your own profile.
+    seeded=0
+    while IFS= read -r f; do
+      cp "$f" "$RA/$(basename "$f")" && seeded=$((seeded + 1))
+    done < <(find "$SEED_DIR" -type f \
+        \( -name '*.md' -o -name '*.txt' -o -name '*.pdf' -o -name '*.docx' \
+           -o -name '*.csv' -o -name '*.xlsx' \) \
+        ! -name 'README.md' ! -name 'DEMO_WALKTHROUGH.md' 2>/dev/null)
 
-    n=$(find "$RA" -maxdepth 1 -type f | wc -l | tr -d ' ')
-    ok "Seeded $n files into $RA/ (CV, 4 research statements, 2 papers, article digest, notes, links)"
+    if [ "$seeded" -gt 0 ]; then
+      ok "Seeded $seeded file(s) into $RA/"
+    else
+      warn "No personal seed documents found in $SEED_DIR (none ship in the public repo)."
+      warn "Add your own CV / statements / papers there and re-run to seed the /lets-go demo."
+    fi
   fi
 fi
 

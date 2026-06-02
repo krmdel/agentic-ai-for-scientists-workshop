@@ -1,32 +1,30 @@
-# Researcher-profile seed
+# Researcher-profile seed (template)
 
-Source materials for the live `/lets-go` demo during Week 1. When the
-workshop's `setup.sh` runs, these files get copied into
-`{Organon}/research_artifacts/` so that `/lets-go` first-run mode finds
-real content instead of an empty folder.
+This folder feeds the live `/lets-go` demo in Week 1. When `setup.sh` runs, any
+documents placed here are copied into `{Organon}/research_artifacts/` so that
+`/lets-go` first-run mode builds a researcher profile from real content instead
+of an empty folder.
 
-## What's in here
+> **Public-repo note.** The instructor's personal documents (CV, LinkedIn,
+> research statements, and papers) are **not included** in this public repo.
+> The structure below is a **template** — drop *your own* equivalent documents
+> into these subfolders, then run `setup.sh`, to reproduce the demo with your
+> own profile. `setup.sh` seeds whatever is present and skips gracefully when
+> the folders are empty.
+
+## What to put here
 
 ```
 researcher-profile-seed/
-├── README.md                                  ← this file
-├── notes.md                                   ← seeds research_artifacts/notes.md
-├── links.md                                   ← seeds research_artifacts/links.md
-├── cv/
-│   ├── cv.md                                  ← curated markdown CV (most readable)
-│   ├── profile.yml                            ← structured profile
-│   ├── cv-kerem-delikoyun-website.docx        ← public website CV
-│   └── linkedin-profile.pdf                   ← LinkedIn export
-├── research-statements/
-│   ├── research_statement-1.docx              ← four narrative research statements
-│   ├── research_statement-2.docx
-│   ├── research_statement-3.docx
-│   └── research_statement-4.docx
-└── publications/
-    ├── rt-had.pdf                             ← RT-HAD paper (real-time DHM, CVPR 2025 W)
-    ├── triagent.pdf                           ← TriAgent paper (LLM multi-agent, arXiv 2025)
-    └── article-digest.md                      ← curated digest of all writings + talks
+├── README.md                ← this file
+├── DEMO_WALKTHROUGH.md      ← how to dry-run the /lets-go demo
+├── cv/                      ← your CV (cv.md / .docx) + an optional profile.yml
+├── research-statements/     ← one or more narrative research statements
+└── publications/            ← a few representative papers (PDF) + an article digest
 ```
+
+Supported file types for seeding: `.md`, `.txt`, `.pdf`, `.docx`, `.csv`, `.xlsx`
+(top-level files in each subfolder; `/lets-go` ingests them on first run).
 
 ## Demo flow
 

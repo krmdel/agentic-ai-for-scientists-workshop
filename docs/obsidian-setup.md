@@ -11,7 +11,7 @@ Free from https://obsidian.md. No account required.
 1. Obsidian → **File → Open folder as vault**.
 2. Navigate to:
    ```
-   ~/Projects/agentic-ai-workshop/week-01-foundations/obsidian-vault/
+   ~/Projects/agentic-ai-for-scientists-workshop/week-01-foundations/obsidian-vault/
    ```
 3. Click **Open**.
 
@@ -69,10 +69,10 @@ The vault is just a folder of markdown files. To take a snapshot or share:
 
 ```bash
 # Snapshot:
-tar -czf vault-snapshot.tar.gz ~/Projects/agentic-ai-workshop/week-01-foundations/obsidian-vault/
+tar -czf vault-snapshot.tar.gz ~/Projects/agentic-ai-for-scientists-workshop/week-01-foundations/obsidian-vault/
 
 # Or commit + push (the vault is tracked in this repo)
-cd ~/Projects/agentic-ai-workshop
+cd ~/Projects/agentic-ai-for-scientists-workshop
 git add week-01-foundations/obsidian-vault/
 git commit -m "vault: notes update"
 git push
@@ -81,7 +81,7 @@ git push
 Pulling on the second laptop:
 
 ```bash
-cd ~/Projects/agentic-ai-workshop
+cd ~/Projects/agentic-ai-for-scientists-workshop
 git pull
 ```
 
