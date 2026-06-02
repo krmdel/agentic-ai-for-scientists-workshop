@@ -834,9 +834,48 @@ That structure — **Thought -> Action -> Observation, repeat** — *is* ReAct. 
 
 ---
 
-## 5. Same thing, via LangChain `create_react_agent`
+## 5. Same thing, via LangChain `create_react_agent` — traced in LangSmith
 
-Now collapse the loop. Same trace shape, but with parsing, retries, and `handle_parsing_errors` provided.
+Now collapse the loop: same trace shape, but with parsing, retries, and `handle_parsing_errors` provided. And this time we'll **watch the reasoning in [LangSmith](https://smith.langchain.com)** as it runs.
+
+**First, turn on tracing.** LangSmith records every LangChain step — each Thought, Action, tool call, latency, token count — as a nested trace, with no change to your agent code. Classic LangChain 0.3.x reads the **`LANGCHAIN_*`** env names (the website's newer `LANGSMITH_*` names are ignored on this version). Add `LANGCHAIN_API_KEY` as a Colab Secret (free key: smith.langchain.com -> Settings -> API Keys), then run the cell below. No key? It just stays off and everything still runs.
+"""),
+
+    code("""# Optional LangSmith tracing. Safe to run with no key — tracing just stays off.
+import os
+
+def _secret(*names):
+    \"\"\"Return the first of these names found in Colab Secrets or the environment.\"\"\"
+    for n in names:
+        try:
+            from google.colab import userdata  # type: ignore
+            v = userdata.get(n)
+            if v:
+                return v
+        except Exception:
+            pass
+        if os.environ.get(n):
+            return os.environ[n]
+    return None
+
+# Colab Secrets don't auto-load into os.environ — read them here and set the names
+# classic LangChain expects. Works whether you named them LANGCHAIN_* or LANGSMITH_*.
+ls_key = _secret("LANGCHAIN_API_KEY", "LANGSMITH_API_KEY")
+if ls_key:
+    os.environ["LANGCHAIN_TRACING_V2"] = "true"           # the switch (NOT LANGSMITH_TRACING on 0.3.x)
+    os.environ["LANGCHAIN_API_KEY"]    = ls_key
+    os.environ["LANGCHAIN_PROJECT"]    = _secret("LANGCHAIN_PROJECT", "LANGSMITH_PROJECT") or "agentic-ai-week2"
+    endpoint = _secret("LANGCHAIN_ENDPOINT", "LANGSMITH_ENDPOINT")   # only needed for the EU region
+    if endpoint:
+        os.environ["LANGCHAIN_ENDPOINT"] = endpoint
+    print("LangSmith tracing ON  ->  project '" + os.environ["LANGCHAIN_PROJECT"] + "'")
+    print("Run the agent below, then open https://smith.langchain.com to watch the trace.")
+else:
+    print("No LANGCHAIN_API_KEY found -> tracing OFF (everything still runs).")
+    print("Add it as a Colab Secret (key icon, left sidebar) to see the reasoning in LangSmith.")
+"""),
+
+    md("""Now run the ReAct agent — if tracing is on, this exact run shows up in your LangSmith project:
 """),
 
     code("""from langchain.agents import create_react_agent, AgentExecutor
@@ -882,14 +921,9 @@ print(result["output"])
 
     md("""Same trace, same answer — but now the loop is one line. Because we built it ourselves first, the abstraction is transparent: when LangChain raises `OutputParserException: Could not parse LLM output`, you know it's the regex on `Action:` that failed, and `handle_parsing_errors=True` is what feeds the model a "fix your format" nudge instead of crashing.
 
-**See inside the loop with LangSmith.** Set two environment variables and every `AgentExecutor` run is traced step-by-step at smith.langchain.com — each Thought, Action, tool latency, and token count — with no code change:
+**Now open [smith.langchain.com](https://smith.langchain.com).** If you turned tracing on above, this exact `AgentExecutor` run is waiting there as a **trace tree** — expand it to see every Thought → Action → Observation, which tool was called with what input, the latency, and the token counts. That's how you debug a real agent: you *watch the trace* instead of guessing which step went wrong.
 
-```python
-# os.environ["LANGCHAIN_TRACING_V2"] = "true"
-# os.environ["LANGCHAIN_API_KEY"]   = "ls-..."   # free key from smith.langchain.com
-```
-
-This is how you debug a real agent: you *watch the trace* instead of guessing which step went wrong.
+> Only **LangChain** calls are traced. The hand-built ReAct loop in section 4 talks to the Gemini SDK directly, so it won't appear in LangSmith — but `create_react_agent` here (and the tool-calling agent in section 8) will.
 
 ---
 

@@ -61,21 +61,28 @@ real_search = TavilySearchResults(max_results=3)   # replaces the mocked web_sea
 
 ## 3. LangSmith — optional (see every agent step)
 
-LangSmith traces each Thought → Action → tool call, with latency and token counts — no code change, just two env vars.
+LangSmith traces each Thought → Action → tool call, with latency and token counts. **Notebook 02 has a ready-to-run "Turn on LangSmith" cell** (section 5) — add the key, run that cell, then run the `create_react_agent` cell and your reasoning shows up as a trace.
 
 1. Sign up at **[smith.langchain.com](https://smith.langchain.com)** (free Developer plan, no card).
 2. **Settings → API Keys → Create API Key**. Copy it (starts with `lsv2_…`).
 3. Colab: 🔑 Secrets → Name **`LANGCHAIN_API_KEY`**, paste, enable access.
-4. Turn tracing on near the top of a notebook:
+
+> ⚠️ **Use the `LANGCHAIN_*` names — not `LANGSMITH_*`.** LangSmith's website now shows `LANGSMITH_TRACING` / `LANGSMITH_API_KEY`, but the workshop pins **classic LangChain 0.3.x**, which only reads the older `LANGCHAIN_*` names. Set `LANGSMITH_TRACING=true` and nothing happens. (Notebook 02's cell accepts either name; if you wire it yourself, use `LANGCHAIN_*`.)
+
+To turn it on manually — Colab Secrets do **not** auto-load into the environment, so you read them:
 
 ```python
 import os
-os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_API_KEY"]   = userdata.get("LANGCHAIN_API_KEY")
-os.environ["LANGCHAIN_PROJECT"]   = "agentic-ai-week2"   # optional: names the trace project
+from google.colab import userdata
+os.environ["LANGCHAIN_TRACING_V2"] = "true"                     # the switch
+os.environ["LANGCHAIN_API_KEY"]    = userdata.get("LANGCHAIN_API_KEY")
+os.environ["LANGCHAIN_PROJECT"]    = "agentic-ai-week2"         # optional: names the project
+# EU region only: os.environ["LANGCHAIN_ENDPOINT"] = "https://eu.api.smith.langchain.com"
 ```
 
-Run any agent, then open your project at [smith.langchain.com](https://smith.langchain.com) to watch the trace.
+Run a **LangChain** cell, then open your project at [smith.langchain.com](https://smith.langchain.com) to watch the trace.
+
+> Only **LangChain** calls are traced. The hand-rolled `google-genai` cells (Notebook 01 §2–3, Notebook 02's manual ReAct loop) call Gemini directly and won't appear — `create_react_agent`, the tool-calling agent, and `llm.invoke` will.
 
 ---
 
