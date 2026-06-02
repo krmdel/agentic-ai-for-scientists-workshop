@@ -21,6 +21,12 @@
 
 ---
 
+## Resources
+
+Curated companion material — the FC-vs-ReAct reference video, LangChain docs, key papers, and more: **[`resources.md`](resources.md)**.
+
+---
+
 ## Pre-class prep (≤ 5 min)
 
 Do this once before the workshop. You can skip everything if you're only watching.
