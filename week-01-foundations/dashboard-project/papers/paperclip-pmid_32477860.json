@@ -1,0 +1,44 @@
+{
+  "_artifact": "paper",
+  "schema_version": 1,
+  "id": "paperclip-pmid_32477860",
+  "source_ids": {
+    "pmid": "32477860",
+    "arxiv": null,
+    "openalex": null,
+    "s2": null,
+    "paperclip": null,
+    "doi": "10.1016/j.rmcr.2020.101072"
+  },
+  "title": "Acute eosinophilic pneumonia with sepsis-like symptoms of arthralgia, joint stiffness and lymph node enlargement.",
+  "authors": [
+    "Jiajia Liu",
+    "Zhiwei Shen",
+    "Bin Tian",
+    "Tingmei Zhang",
+    "Cheng Zhang"
+  ],
+  "year": 2022,
+  "journal": "Respiratory Medicine Case Reports",
+  "abstract": "Acute eosinophilic pneumonia presenting with sepsis-like symptoms \u2014 caution for relying on inflammatory or febrile signature alone when eosinophil-driven syndromes can mimic bacterial sepsis.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/32477860",
+  "doi_url": "https://doi.org/10.1016/j.rmcr.2020.101072",
+  "pdf_url": null,
+  "citation_count": null,
+  "sources": [
+    "pubmed"
+  ],
+  "library_path": "projects/briefs/agentic-ai-workshop/papers/paperclip-pmid_32477860.json",
+  "saved_at": "2026-05-19T03:30:00.000Z",
+  "relevance_score": 0.52,
+  "relevance_breakdown": {
+    "title": 0.5,
+    "abstract": 0.5
+  },
+  "search_batch_id": "batch_demo_workshop_v1",
+  "tags": [
+    "eosinophilia",
+    "case-report",
+    "differential"
+  ]
+}

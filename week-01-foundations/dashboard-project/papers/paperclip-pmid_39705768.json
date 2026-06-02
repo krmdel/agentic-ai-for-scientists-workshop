@@ -1,0 +1,50 @@
+{
+  "_artifact": "paper",
+  "schema_version": 1,
+  "id": "paperclip-pmid_39705768",
+  "source_ids": {
+    "pmid": "39705768",
+    "arxiv": null,
+    "openalex": null,
+    "s2": null,
+    "paperclip": null,
+    "doi": "10.1016/j.artmed.2024.103008"
+  },
+  "title": "Advances in diagnosis and prognosis of bacteraemia, bloodstream infection, and sepsis using machine learning: A comprehensive living literature review.",
+  "authors": [
+    "B Hernandez",
+    "D K Ming",
+    "T M Rawson",
+    "W Bolton",
+    "R Wilson",
+    "V Vasikasin",
+    "J Daniels",
+    "J Rodriguez-Manzano",
+    "F J Davies",
+    "P Georgiou",
+    "A H Holmes"
+  ],
+  "year": 2025,
+  "journal": "Artificial intelligence in medicine",
+  "abstract": "Living review of machine-learning techniques used for diagnosis and prognosis of bacteraemia, bloodstream infections, and sepsis. Surveys model efficacy, limitations, and integration challenges into clinical practice.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/39705768",
+  "doi_url": "https://doi.org/10.1016/j.artmed.2024.103008",
+  "pdf_url": null,
+  "citation_count": null,
+  "sources": [
+    "pubmed"
+  ],
+  "library_path": "projects/briefs/agentic-ai-workshop/papers/paperclip-pmid_39705768.json",
+  "saved_at": "2026-05-19T03:30:00.000Z",
+  "relevance_score": 0.6333333333333333,
+  "relevance_breakdown": {
+    "title": 0.5,
+    "abstract": 0.5
+  },
+  "search_batch_id": "batch_demo_workshop_v1",
+  "tags": [
+    "sepsis",
+    "ML-review",
+    "bloodstream-infection"
+  ]
+}

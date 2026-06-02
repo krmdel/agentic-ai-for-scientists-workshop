@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Skeptic",
+    "role": "challenges every claim",
+    "avatar": "S",
+    "active": true
+  },
+  {
+    "name": "Methodologist",
+    "role": "checks study design",
+    "avatar": "M",
+    "active": true
+  },
+  {
+    "name": "Domain-expert",
+    "role": "field-specific knowledge",
+    "avatar": "D",
+    "active": true
+  },
+  {
+    "name": "Biostatistician",
+    "role": "power, multiple comparisons, mixed-effects, missing data",
+    "avatar": "B",
+    "active": true
+  }
+]

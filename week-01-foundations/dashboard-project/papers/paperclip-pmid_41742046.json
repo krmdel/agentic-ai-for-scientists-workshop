@@ -1,0 +1,47 @@
+{
+  "_artifact": "paper",
+  "schema_version": 1,
+  "id": "paperclip-pmid_41742046",
+  "source_ids": {
+    "pmid": "41742046",
+    "arxiv": null,
+    "openalex": null,
+    "s2": null,
+    "paperclip": null,
+    "doi": "10.1186/s12879-026-12803-y"
+  },
+  "title": "Utility of CBC-derived ratios in the diagnosis and prediction of active tuberculosis in people with rheumatic diseases.",
+  "authors": [
+    "Fengying Wu",
+    "Xiaochun Shi",
+    "Yuanchun Li",
+    "Lantian Xie",
+    "Yuchen Liu",
+    "Ye Liu",
+    "Lifan Zhang",
+    "Xiaoqing Liu"
+  ],
+  "year": 2026,
+  "journal": "BMC Infectious Diseases",
+  "abstract": "CBC-derived ratios (NLR, PLR, others) assist active tuberculosis diagnosis and risk assessment in people with rheumatic diseases, supplementing the limited sensitivity of microbiologic testing.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/41742046",
+  "doi_url": "https://doi.org/10.1186/s12879-026-12803-y",
+  "pdf_url": null,
+  "citation_count": null,
+  "sources": [
+    "pubmed"
+  ],
+  "library_path": "projects/briefs/agentic-ai-workshop/papers/paperclip-pmid_41742046.json",
+  "saved_at": "2026-05-19T03:30:00.000Z",
+  "relevance_score": 0.5210526315789473,
+  "relevance_breakdown": {
+    "title": 0.5,
+    "abstract": 0.5
+  },
+  "search_batch_id": "batch_demo_workshop_v1",
+  "tags": [
+    "CBC-ratios",
+    "tuberculosis",
+    "diagnostic-aid"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "_artifact": "figure",
+  "schema_version": 1,
+  "id": "fig-20260519-9a4a07",
+  "project_slug": "agentic-ai-workshop",
+  "kind": "illustration",
+  "version": 1,
+  "format": "png",
+  "data_source": null,
+  "params": {
+    "backend": "nano-banana",
+    "model": "gemini-3-pro-image",
+    "style": "scientific",
+    "sub_style": "mechanism-schematic",
+    "resolution": "2K",
+    "aspect_ratio": "4:3"
+  },
+  "caption": "Bone marrow stress response in bacterial infection. Cross-section view: (1) immature granulocyte spillover from the hematopoietic niche into peripheral blood (IG% rise), (2) neutrophilia as mature and band-form neutrophils accumulate in circulation, and (3) eosinophil sequestration from blood to lymph node under cortisol drive.",
+  "alt_text": "Diagram with two halves. Left: bone marrow with myeloid precursors and band cells. Right: a blood vessel cross-section with mature and immature neutrophils, and below it a lymph node icon. Three labeled arrows show IG% spillover, neutrophilia, and eosinophil sequestration.",
+  "code_path": null,
+  "png_path": "projects/briefs/agentic-ai-workshop/figures/fig-20260519-9a4a07/v1.png",
+  "svg_path": null,
+  "thumbnail_path": "projects/briefs/agentic-ai-workshop/figures/fig-20260519-9a4a07/v1.png",
+  "library_path": "projects/briefs/agentic-ai-workshop/figures/fig-20260519-9a4a07/index.json",
+  "backend": "nano-banana",
+  "cost_cents": 0,
+  "parent_version": null,
+  "created_at": "2026-05-19T04:20:00.000Z"
+}

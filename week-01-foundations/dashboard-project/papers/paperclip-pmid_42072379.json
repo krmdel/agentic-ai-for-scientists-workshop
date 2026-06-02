@@ -1,0 +1,50 @@
+{
+  "_artifact": "paper",
+  "schema_version": 1,
+  "id": "paperclip-pmid_42072379",
+  "source_ids": {
+    "pmid": "42072379",
+    "arxiv": null,
+    "openalex": null,
+    "s2": null,
+    "paperclip": null,
+    "doi": "10.3390/biomedicines14040839"
+  },
+  "title": "Prognostic Value of International Normalized Ratio and Thrombocytopenia in Early Risk Stratification of Septic Patients.",
+  "authors": [
+    "Sofia Tejada",
+    "Andres Giglio",
+    "Maria Aranda",
+    "Antonia Socias",
+    "Alberto Del Castillo",
+    "Joana Mena",
+    "Sara Franco",
+    "Maria Ortega",
+    "Yasmina Nieto",
+    "Marcio Borges-Sa"
+  ],
+  "year": 2026,
+  "journal": "Biomedicines",
+  "abstract": "Retrospective cohort of 6433 sepsis patients (2006-2022). INR at diagnosis predicted in-hospital mortality independently (OR 2.18, p=0.0002); platelet count alone did not improve the model (AUC 0.746). Combined INR>3.0 + platelets<50e9/L identified a 50%-mortality subgroup.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/42072379",
+  "doi_url": "https://doi.org/10.3390/biomedicines14040839",
+  "pdf_url": null,
+  "citation_count": null,
+  "sources": [
+    "pubmed"
+  ],
+  "library_path": "projects/briefs/agentic-ai-workshop/papers/paperclip-pmid_42072379.json",
+  "saved_at": "2026-05-19T03:30:00.000Z",
+  "relevance_score": 0.525,
+  "relevance_breakdown": {
+    "title": 0.5,
+    "abstract": 0.5
+  },
+  "search_batch_id": "batch_demo_workshop_v1",
+  "tags": [
+    "INR",
+    "platelets",
+    "sepsis-mortality",
+    "risk-stratification"
+  ]
+}

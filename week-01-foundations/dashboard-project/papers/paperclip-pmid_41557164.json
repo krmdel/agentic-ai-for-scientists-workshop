@@ -1,0 +1,45 @@
+{
+  "_artifact": "paper",
+  "schema_version": 1,
+  "id": "paperclip-pmid_41557164",
+  "source_ids": {
+    "pmid": "41557164",
+    "arxiv": null,
+    "openalex": null,
+    "s2": null,
+    "paperclip": null,
+    "doi": "10.1007/s00431-026-06763-3"
+  },
+  "title": "A comparative evaluation of salivary and serum procalcitonin to identify infants with serious bacterial infections.",
+  "authors": [
+    "Sercan Cinarli",
+    "Ali Yurtseven",
+    "Caner Turan",
+    "Elif Azarsiz",
+    "Timur Kose",
+    "Eylem Ulas Saz"
+  ],
+  "year": 2026,
+  "journal": "European Journal of Pediatrics",
+  "abstract": "Salivary PCT correlates with serum PCT and offers high diagnostic accuracy (AUC 0.92) for serious bacterial infections in infants <1 y. Salivary PCT performance approaches serum PCT (AUC 0.96) and exceeds serum CRP (AUC 0.88), supporting a non-invasive alternative.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/41557164",
+  "doi_url": "https://doi.org/10.1007/s00431-026-06763-3",
+  "pdf_url": null,
+  "citation_count": null,
+  "sources": [
+    "pubmed"
+  ],
+  "library_path": "projects/briefs/agentic-ai-workshop/papers/paperclip-pmid_41557164.json",
+  "saved_at": "2026-05-19T03:30:00.000Z",
+  "relevance_score": 0.5285714285714286,
+  "relevance_breakdown": {
+    "title": 0.5,
+    "abstract": 0.5
+  },
+  "search_batch_id": "batch_demo_workshop_v1",
+  "tags": [
+    "procalcitonin",
+    "infant-SBI",
+    "non-invasive"
+  ]
+}

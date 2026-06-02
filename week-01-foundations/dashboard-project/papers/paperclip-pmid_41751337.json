@@ -1,0 +1,49 @@
+{
+  "_artifact": "paper",
+  "schema_version": 1,
+  "id": "paperclip-pmid_41751337",
+  "source_ids": {
+    "pmid": "41751337",
+    "arxiv": null,
+    "openalex": null,
+    "s2": null,
+    "paperclip": null,
+    "doi": "10.3390/biomedicines14020438"
+  },
+  "title": "Lymphopenia in Bacterial Sepsis and SARS-CoV-2 Infection.",
+  "authors": [
+    "Raluca Tertess",
+    "Lucian Cristian Petcu",
+    "Bogdan Florentin Nitu",
+    "Mihaela Mariana Mavrodin",
+    "Elena Cucli",
+    "Elena Andreea Topa",
+    "Constantin Ionescu",
+    "Nicolae Carciumaru",
+    "Simona Claudia Cambrea"
+  ],
+  "year": 2026,
+  "journal": "Biomedicines",
+  "abstract": "Prospective cohort (n=95). Serial absolute lymphocyte counts and NLR on days 1, 3, 5, 7. Viral sepsis (COVID-19) showed sustained lymphopenia and progressive NLR rise; non-survivors had lower lymphocytes from day 3 and higher NLR on day 7 regardless of etiology. Longitudinal trends outperformed single timepoints.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/41751337",
+  "doi_url": "https://doi.org/10.3390/biomedicines14020438",
+  "pdf_url": null,
+  "citation_count": null,
+  "sources": [
+    "pubmed"
+  ],
+  "library_path": "projects/briefs/agentic-ai-workshop/papers/paperclip-pmid_41751337.json",
+  "saved_at": "2026-05-19T03:30:00.000Z",
+  "relevance_score": 0.5222222222222223,
+  "relevance_breakdown": {
+    "title": 0.5,
+    "abstract": 0.5
+  },
+  "search_batch_id": "batch_demo_workshop_v1",
+  "tags": [
+    "lymphopenia",
+    "NLR",
+    "longitudinal",
+    "etiology"
+  ]
+}

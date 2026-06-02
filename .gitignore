@@ -1,0 +1,53 @@
+# Secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# OS
+.DS_Store
+Thumbs.db
+.AppleDouble
+.LSOverride
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.venv/
+venv/
+
+# Node
+node_modules/
+.next/
+out/
+build/
+dist/
+*.log
+npm-debug.log*
+
+# Obsidian — keep .obsidian/ config but ignore workspace state + cache
+**/obsidian-vault/.obsidian/workspace*.json
+**/obsidian-vault/.obsidian/cache/
+**/obsidian-vault/.trash/
+
+# Marp dev artifacts
+*.tmp.md
+
+# Workshop-specific
+**/.organon/runs/*.tmp
+**/idea-inbox-starter/.env.local
+
+# Slides — local-only backups (kept for compare, not for git)
+**/slides/slides-v2.image-only.pptx
+**/slides/~$*.pptx
+**/assets/logos/*.previous.png

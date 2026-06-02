@@ -1,0 +1,51 @@
+{
+  "_artifact": "paper",
+  "schema_version": 1,
+  "id": "paperclip-pmid_39392375",
+  "source_ids": {
+    "pmid": "39392375",
+    "arxiv": null,
+    "openalex": null,
+    "s2": null,
+    "paperclip": null,
+    "doi": "10.1097/CCE.0000000000001165"
+  },
+  "title": "Development and Validation of a Machine Learning Model for Early Detection of Untreated Infection.",
+  "authors": [
+    "Kevin G Buell",
+    "Kyle A Carey",
+    "Nicole Dussault",
+    "William F Parker",
+    "Jay Dumanian",
+    "Sivasubramanium V Bhavani",
+    "Emily R Gilbert",
+    "Christopher J Winslow",
+    "Nirav S Shah",
+    "Majid Afshar",
+    "Dana P Edelson",
+    "Matthew M Churpek"
+  ],
+  "year": 2024,
+  "journal": "Critical Care Explorations",
+  "abstract": "Diagnostic uncertainty for infection causes delays in antibiotic administration in infected patients and unnecessary antibiotic administration in non-infected patients. The validated ML model targets earlier detection of untreated infection at the bedside.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/39392375",
+  "doi_url": "https://doi.org/10.1097/CCE.0000000000001165",
+  "pdf_url": null,
+  "citation_count": null,
+  "sources": [
+    "pubmed"
+  ],
+  "library_path": "projects/briefs/agentic-ai-workshop/papers/paperclip-pmid_39392375.json",
+  "saved_at": "2026-05-19T03:30:00.000Z",
+  "relevance_score": 0.6,
+  "relevance_breakdown": {
+    "title": 0.5,
+    "abstract": 0.5
+  },
+  "search_batch_id": "batch_demo_workshop_v1",
+  "tags": [
+    "antibiotic-timing",
+    "ML",
+    "early-detection"
+  ]
+}

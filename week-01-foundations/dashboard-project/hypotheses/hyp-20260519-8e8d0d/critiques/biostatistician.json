@@ -1,0 +1,31 @@
+{
+  "_artifact": "persona-critique",
+  "schema_version": 1,
+  "hypothesis_id": "hyp-20260519-8e8d0d",
+  "persona": "Biostatistician",
+  "persona_slug": "biostatistician",
+  "confidence": "medium",
+  "critiques": [
+    "Power: with 7 features x 4 timepoints = 28 hypotheses, Bonferroni alpha=0.05/28 = 0.0018 \u2014 at this alpha, n=600 detects only d>=0.3 SD differences. Plan for n>=600 minimum, n>=1000 preferred.",
+    "Mixed-effects required: patients contribute repeated measures; a flat logistic regression will under-estimate standard errors and inflate type-I error. Patient-level random intercept + random slope on time is the minimum.",
+    "Informative missingness: 'CBC drawn or not' is itself a function of acuity. Naive complete-case analysis will bias toward the sicker subgroup. IPW or MI with sensitivity bounds are mandatory.",
+    "Multiple comparison correction strategy unspecified. Bonferroni is too conservative across 28 correlated tests; use BH-FDR within the pre-specified feature family.",
+    "Calibration vs discrimination: the field reports AUROC but not Brier scores or calibration intercept/slope. At a clinical decision threshold, well-calibrated probabilities matter more than ranking; report both."
+  ],
+  "counter_evidence": [
+    "Liporaci 2024 (pmid_38691554) reports 99% precision + 100% sensitivity \u2014 flag for overfitting. n=76 patients in PICU is below the variance floor for these point estimates; CI must be reported.",
+    "Tejada 2026 (pmid_42072379) demonstrates the right framing: report AUROC AND OR with CI; show how each added feature changes the model rather than reporting a final-model headline."
+  ],
+  "suggested_experiments": [
+    "Pre-register: feature set, endpoint, primary analysis (mixed-effects logistic with random intercept, complete-case + IPW + MI sensitivity), and FDR family.",
+    "Power calculation: target effect size d=0.3, alpha=0.0018 (Bonferroni / BH-FDR equivalent), power=0.8 \u2192 minimum n=600. Sensitivity table for n in {400, 600, 800, 1000}.",
+    "Report calibration (Brier, calibration slope, ECE) alongside AUROC. Decision-curve analysis at the planned operating point."
+  ],
+  "raw_council_block": "ANALYSIS_PLAN: mixed-effects logistic regression, patient-level random intercept + random slope, BH-FDR within feature family, sensitivity analysis with IPW + MI.\nREPORTING: AUROC + Brier + calibration slope + decision-curve, with CI.\nMINIMUM_n: 600 (Bonferroni-corrected), 1000 preferred.\nCONFIDENCE: 0.60 \u2014 current claim is not powered or specified enough to test; design fixable.",
+  "supporting_paper_ids": [
+    "paperclip-pmid_38691554",
+    "paperclip-pmid_42072379"
+  ],
+  "library_path": "projects/briefs/agentic-ai-workshop/hypotheses/hyp-20260519-8e8d0d/critiques/biostatistician.json",
+  "created_at": "2026-05-19T03:30:00.000Z"
+}

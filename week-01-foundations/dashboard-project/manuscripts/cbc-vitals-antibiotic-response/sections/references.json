@@ -1,0 +1,15 @@
+{
+  "_artifact": "section-draft",
+  "schema_version": 1,
+  "id": "sect-cbc-vitals-antibiotic-response-references",
+  "manuscript_slug": "cbc-vitals-antibiotic-response",
+  "section_id": "references",
+  "section_type": "references",
+  "status": "draft",
+  "content_md": "## References\n\nReferences are resolved from `manuscript.json.linked_paper_ids` at render time. See `papers/` for full metadata.\n",
+  "linked_figure_ids": [],
+  "linked_paper_ids": [],
+  "version": 1,
+  "library_path": "projects/briefs/agentic-ai-workshop/manuscripts/cbc-vitals-antibiotic-response/sections/references.md",
+  "updated_at": "2026-05-19T03:30:00.000Z"
+}

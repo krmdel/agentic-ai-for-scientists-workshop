@@ -1,0 +1,23 @@
+{
+  "_artifact": "section-draft",
+  "schema_version": 1,
+  "id": "sect-cbc-vitals-antibiotic-response-discussion",
+  "manuscript_slug": "cbc-vitals-antibiotic-response",
+  "section_id": "discussion",
+  "section_type": "discussion",
+  "status": "draft",
+  "content_md": "## Discussion\n\nThis workshop demo illustrates three claims that the literature already supports in adjacent settings and that this cohort makes locally testable. First, immature granulocyte percentage at admission separates outcome strata more cleanly than admission NEUT% \u2014 the bone-marrow stress signal is biologically prior to peripheral neutrophilia and rises faster \\cite{Grudzinska2020}. Second, the *slope* of EOS% recovery (not the admission value) is the early signature of clinical improvement under empirical antibiotic therapy, echoing the broader finding that *trajectories beat single-timepoint biomarkers* in sepsis \\cite{Tertess2026} \\cite{Xu2026}. Third, the elderly subgroup requires explicit stratification: vital-sign normalisation is attenuated, and a global model fit on a younger ICU cohort will mis-predict on the population that matters most for community-acquired bacterial infection \\cite{Grudzinska2020}.\n\n**Limitations.** The cohort is synthetic, with trajectories shaped to match outcome by construction; it does not constitute evidence. Its purpose is to instrument the workflow \u2014 literature \u2192 hypothesis \u2192 critique \u2192 data \u2192 figure \u2192 draft \u2014 so the dashboard's workspaces can be demonstrated against a coherent storyline. Bedside deployment of any model derived from real data of this shape would require: (i) prospective external-site validation \\cite{Hernandez2025}; (ii) pre-registered analysis plan with locked feature set and locked endpoint \\cite{Buell2024}; (iii) explicit handling of informative missingness in CBC-draw frequency, which is a function of acuity; and (iv) calibration reporting (Brier score, calibration slope, decision-curve analysis) alongside discrimination.\n\n**Why now.** Three convergent trends make this hypothesis worth testing prospectively. The host-response paradigm is reframing diagnostics around biomarker panels rather than direct pathogen detection \\cite{Kothari2026}; growth-mixture modeling and other latent-trajectory methods are now standard for longitudinal biomarker phenotyping \\cite{Xu2026}; and ML on routine vital-signs data already crosses the AUROC > 0.9 line for bacterial-screening tasks \\cite{Khanghah2025}. Adding sequential CBC indices to the trajectory model is the next obvious step.\n\n**Next.** A two-stage design \u2014 retrospective hypothesis generation on MIMIC-IV followed by prospective registration at a clinical partner site \u2014 is the minimum credible path. The TUMCREATE label-free imaging flow cytometer offers a parallel opportunity to ground-truth IG% against direct morphology, closing a measurement-validity loop that automated 5-part differentials cannot.\n",
+  "linked_figure_ids": [],
+  "linked_paper_ids": [
+    "Grudzinska2020",
+    "Tertess2026",
+    "Xu2026",
+    "Hernandez2025",
+    "Buell2024",
+    "Kothari2026",
+    "Khanghah2025"
+  ],
+  "version": 1,
+  "library_path": "projects/briefs/agentic-ai-workshop/manuscripts/cbc-vitals-antibiotic-response/sections/discussion.md",
+  "updated_at": "2026-05-19T03:30:00.000Z"
+}

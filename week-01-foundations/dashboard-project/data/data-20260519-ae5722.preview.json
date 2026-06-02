@@ -1,0 +1,1014 @@
+{
+  "_artifact": "dataframe",
+  "schema_version": 1,
+  "id": "data-20260519-ae5722",
+  "project_slug": "agentic-ai-workshop",
+  "filename": "cohort_cbc_vitals.csv",
+  "format": "csv",
+  "size_bytes": 16485,
+  "rows_total": 100,
+  "columns": [
+    {
+      "name": "patient_id",
+      "type": "categorical",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "unique_count": 100,
+        "top": [
+          [
+            "P001",
+            1
+          ],
+          [
+            "P002",
+            1
+          ],
+          [
+            "P003",
+            1
+          ],
+          [
+            "P004",
+            1
+          ],
+          [
+            "P005",
+            1
+          ],
+          [
+            "P006",
+            1
+          ],
+          [
+            "P007",
+            1
+          ],
+          [
+            "P008",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "name": "age",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 63.33,
+        "std": 15.9292,
+        "min": 18.0,
+        "max": 93.0,
+        "q1": 53.0,
+        "median": 66.0,
+        "q3": 76.0
+      }
+    },
+    {
+      "name": "sex",
+      "type": "categorical",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "unique_count": 2,
+        "top": [
+          [
+            "M",
+            51
+          ],
+          [
+            "F",
+            49
+          ]
+        ]
+      }
+    },
+    {
+      "name": "infection_site",
+      "type": "categorical",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "unique_count": 6,
+        "top": [
+          [
+            "UTI",
+            28
+          ],
+          [
+            "pneumonia",
+            25
+          ],
+          [
+            "BSI",
+            21
+          ],
+          [
+            "intra-abdominal",
+            12
+          ],
+          [
+            "skin-soft-tissue",
+            11
+          ],
+          [
+            "other",
+            3
+          ]
+        ]
+      }
+    },
+    {
+      "name": "antibiotic_regimen",
+      "type": "categorical",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "unique_count": 12,
+        "top": [
+          [
+            "pip-tazo",
+            21
+          ],
+          [
+            "ceftriaxone",
+            13
+          ],
+          [
+            "vancomycin",
+            13
+          ],
+          [
+            "meropenem",
+            10
+          ],
+          [
+            "amox-clav",
+            8
+          ],
+          [
+            "ceftriaxone+azithromycin",
+            8
+          ],
+          [
+            "ertapenem",
+            7
+          ],
+          [
+            "ampicillin",
+            7
+          ]
+        ]
+      }
+    },
+    {
+      "name": "NEUT_pct_0",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 86.6909,
+        "std": 4.9649,
+        "min": 74.66,
+        "max": 99.0,
+        "q1": 83.93,
+        "median": 86.5,
+        "q3": 90.34
+      }
+    },
+    {
+      "name": "NEUT_pct_24",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 84.4804,
+        "std": 5.8134,
+        "min": 68.5,
+        "max": 99.0,
+        "q1": 80.76,
+        "median": 84.48,
+        "q3": 88.07
+      }
+    },
+    {
+      "name": "NEUT_pct_48",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 81.7298,
+        "std": 7.036,
+        "min": 61.16,
+        "max": 99.0,
+        "q1": 76.81,
+        "median": 81.44,
+        "q3": 87.24
+      }
+    },
+    {
+      "name": "NEUT_pct_72",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 78.9492,
+        "std": 8.6642,
+        "min": 57.99,
+        "max": 99.0,
+        "q1": 72.96,
+        "median": 76.79,
+        "q3": 85.62
+      }
+    },
+    {
+      "name": "EOS_pct_0",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 0.177,
+        "std": 0.1051,
+        "min": 0.0,
+        "max": 0.43,
+        "q1": 0.11,
+        "median": 0.17,
+        "q3": 0.25
+      }
+    },
+    {
+      "name": "EOS_pct_24",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 0.4165,
+        "std": 0.2139,
+        "min": 0.0,
+        "max": 0.86,
+        "q1": 0.27,
+        "median": 0.45,
+        "q3": 0.56
+      }
+    },
+    {
+      "name": "EOS_pct_48",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 0.6549,
+        "std": 0.3603,
+        "min": 0.0,
+        "max": 1.29,
+        "q1": 0.35,
+        "median": 0.72,
+        "q3": 0.98
+      }
+    },
+    {
+      "name": "EOS_pct_72",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 0.88,
+        "std": 0.4979,
+        "min": 0.0,
+        "max": 1.7,
+        "q1": 0.48,
+        "median": 0.98,
+        "q3": 1.29
+      }
+    },
+    {
+      "name": "IG_pct_0",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 4.8005,
+        "std": 1.9608,
+        "min": 2.35,
+        "max": 13.84,
+        "q1": 3.62,
+        "median": 4.37,
+        "q3": 5.5
+      }
+    },
+    {
+      "name": "IG_pct_24",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 4.0148,
+        "std": 2.1132,
+        "min": 1.13,
+        "max": 11.77,
+        "q1": 2.74,
+        "median": 3.54,
+        "q3": 4.53
+      }
+    },
+    {
+      "name": "IG_pct_48",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 3.3239,
+        "std": 2.637,
+        "min": 0.0,
+        "max": 12.54,
+        "q1": 1.59,
+        "median": 2.58,
+        "q3": 4.56
+      }
+    },
+    {
+      "name": "IG_pct_72",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 2.6714,
+        "std": 3.0633,
+        "min": 0.0,
+        "max": 12.72,
+        "q1": 0.42,
+        "median": 1.7,
+        "q3": 3.5
+      }
+    },
+    {
+      "name": "HR_0",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 108.74,
+        "std": 10.0258,
+        "min": 79.0,
+        "max": 133.0,
+        "q1": 103.0,
+        "median": 109.0,
+        "q3": 115.0
+      }
+    },
+    {
+      "name": "HR_24",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 104.77,
+        "std": 11.1181,
+        "min": 78.0,
+        "max": 134.0,
+        "q1": 97.0,
+        "median": 105.0,
+        "q3": 113.0
+      }
+    },
+    {
+      "name": "HR_48",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 100.92,
+        "std": 13.3255,
+        "min": 72.0,
+        "max": 134.0,
+        "q1": 90.0,
+        "median": 102.0,
+        "q3": 109.0
+      }
+    },
+    {
+      "name": "HR_72",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 97.43,
+        "std": 15.0931,
+        "min": 68.0,
+        "max": 131.0,
+        "q1": 85.0,
+        "median": 96.0,
+        "q3": 109.0
+      }
+    },
+    {
+      "name": "Temp_0",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 39.182,
+        "std": 0.6245,
+        "min": 37.7,
+        "max": 40.9,
+        "q1": 38.8,
+        "median": 39.2,
+        "q3": 39.6
+      }
+    },
+    {
+      "name": "Temp_24",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 38.815,
+        "std": 0.7707,
+        "min": 37.0,
+        "max": 41.0,
+        "q1": 38.3,
+        "median": 38.8,
+        "q3": 39.4
+      }
+    },
+    {
+      "name": "Temp_48",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 38.451,
+        "std": 0.9353,
+        "min": 35.8,
+        "max": 41.0,
+        "q1": 37.8,
+        "median": 38.3,
+        "q3": 39.1
+      }
+    },
+    {
+      "name": "Temp_72",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 38.076,
+        "std": 1.2117,
+        "min": 35.9,
+        "max": 41.0,
+        "q1": 37.2,
+        "median": 38.0,
+        "q3": 38.7
+      }
+    },
+    {
+      "name": "RR_0",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 22.48,
+        "std": 3.3529,
+        "min": 17.0,
+        "max": 34.0,
+        "q1": 21.0,
+        "median": 22.0,
+        "q3": 24.0
+      }
+    },
+    {
+      "name": "RR_24",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 21.64,
+        "std": 3.4918,
+        "min": 16.0,
+        "max": 35.0,
+        "q1": 19.0,
+        "median": 22.0,
+        "q3": 23.0
+      }
+    },
+    {
+      "name": "RR_48",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 20.87,
+        "std": 3.9839,
+        "min": 14.0,
+        "max": 37.0,
+        "q1": 18.0,
+        "median": 20.0,
+        "q3": 22.0
+      }
+    },
+    {
+      "name": "RR_72",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 20.28,
+        "std": 4.1635,
+        "min": 14.0,
+        "max": 37.0,
+        "q1": 18.0,
+        "median": 20.0,
+        "q3": 22.0
+      }
+    },
+    {
+      "name": "SpO2_0",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 92.47,
+        "std": 3.4273,
+        "min": 83.0,
+        "max": 99.0,
+        "q1": 91.0,
+        "median": 93.0,
+        "q3": 95.0
+      }
+    },
+    {
+      "name": "SpO2_24",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 93.01,
+        "std": 3.8178,
+        "min": 81.0,
+        "max": 100.0,
+        "q1": 91.0,
+        "median": 93.0,
+        "q3": 95.0
+      }
+    },
+    {
+      "name": "SpO2_48",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 93.14,
+        "std": 3.8717,
+        "min": 81.0,
+        "max": 100.0,
+        "q1": 91.0,
+        "median": 94.0,
+        "q3": 96.0
+      }
+    },
+    {
+      "name": "SpO2_72",
+      "type": "numeric",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "mean": 93.75,
+        "std": 4.0286,
+        "min": 81.0,
+        "max": 100.0,
+        "q1": 92.0,
+        "median": 95.0,
+        "q3": 96.0
+      }
+    },
+    {
+      "name": "outcome",
+      "type": "categorical",
+      "type_inferred_by": "auto",
+      "null_count": 0,
+      "stats": {
+        "count": 100,
+        "unique_count": 4,
+        "top": [
+          [
+            "improver",
+            64
+          ],
+          [
+            "slow_responder",
+            16
+          ],
+          [
+            "non_responder",
+            14
+          ],
+          [
+            "died",
+            6
+          ]
+        ]
+      }
+    }
+  ],
+  "preview_rows": [
+    {
+      "patient_id": "P001",
+      "age": "51",
+      "sex": "F",
+      "infection_site": "intra-abdominal",
+      "antibiotic_regimen": "ertapenem",
+      "NEUT_pct_0": "93.61",
+      "NEUT_pct_24": "94.0",
+      "NEUT_pct_48": "89.43",
+      "NEUT_pct_72": "90.61",
+      "EOS_pct_0": "0.26",
+      "EOS_pct_24": "0.21",
+      "EOS_pct_48": "0.13",
+      "EOS_pct_72": "0.12",
+      "IG_pct_0": "5.69",
+      "IG_pct_24": "6.14",
+      "IG_pct_48": "6.65",
+      "IG_pct_72": "6.42",
+      "HR_0": "86",
+      "HR_24": "88",
+      "HR_48": "91",
+      "HR_72": "91",
+      "Temp_0": "39.2",
+      "Temp_24": "40.0",
+      "Temp_48": "38.8",
+      "Temp_72": "38.3",
+      "RR_0": "17",
+      "RR_24": "17",
+      "RR_48": "17",
+      "RR_72": "18",
+      "SpO2_0": "97",
+      "SpO2_24": "95",
+      "SpO2_48": "95",
+      "SpO2_72": "96",
+      "outcome": "non_responder"
+    },
+    {
+      "patient_id": "P002",
+      "age": "37",
+      "sex": "M",
+      "infection_site": "UTI",
+      "antibiotic_regimen": "pip-tazo",
+      "NEUT_pct_0": "82.74",
+      "NEUT_pct_24": "78.52",
+      "NEUT_pct_48": "73.28",
+      "NEUT_pct_72": "70.09",
+      "EOS_pct_0": "0.43",
+      "EOS_pct_24": "0.63",
+      "EOS_pct_48": "0.96",
+      "EOS_pct_72": "1.35",
+      "IG_pct_0": "5.22",
+      "IG_pct_24": "4.25",
+      "IG_pct_48": "2.36",
+      "IG_pct_72": "0.0",
+      "HR_0": "106",
+      "HR_24": "99",
+      "HR_48": "99",
+      "HR_72": "92",
+      "Temp_0": "39.8",
+      "Temp_24": "39.5",
+      "Temp_48": "39.3",
+      "Temp_72": "38.0",
+      "RR_0": "25",
+      "RR_24": "25",
+      "RR_48": "23",
+      "RR_72": "21",
+      "SpO2_0": "93",
+      "SpO2_24": "95",
+      "SpO2_48": "94",
+      "SpO2_72": "95",
+      "outcome": "improver"
+    },
+    {
+      "patient_id": "P003",
+      "age": "61",
+      "sex": "M",
+      "infection_site": "skin-soft-tissue",
+      "antibiotic_regimen": "amox-clav",
+      "NEUT_pct_0": "92.67",
+      "NEUT_pct_24": "89.63",
+      "NEUT_pct_48": "89.8",
+      "NEUT_pct_72": "87.12",
+      "EOS_pct_0": "0.0",
+      "EOS_pct_24": "0.22",
+      "EOS_pct_48": "0.33",
+      "EOS_pct_72": "0.33",
+      "IG_pct_0": "3.7",
+      "IG_pct_24": "3.5",
+      "IG_pct_48": "3.0",
+      "IG_pct_72": "3.29",
+      "HR_0": "114",
+      "HR_24": "109",
+      "HR_48": "107",
+      "HR_72": "105",
+      "Temp_0": "39.6",
+      "Temp_24": "41.0",
+      "Temp_48": "38.8",
+      "Temp_72": "38.8",
+      "RR_0": "17",
+      "RR_24": "17",
+      "RR_48": "16",
+      "RR_72": "15",
+      "SpO2_0": "90",
+      "SpO2_24": "91",
+      "SpO2_48": "91",
+      "SpO2_72": "91",
+      "outcome": "slow_responder"
+    },
+    {
+      "patient_id": "P004",
+      "age": "69",
+      "sex": "F",
+      "infection_site": "intra-abdominal",
+      "antibiotic_regimen": "linezolid",
+      "NEUT_pct_0": "88.98",
+      "NEUT_pct_24": "81.51",
+      "NEUT_pct_48": "88.14",
+      "NEUT_pct_72": "82.64",
+      "EOS_pct_0": "0.01",
+      "EOS_pct_24": "0.09",
+      "EOS_pct_48": "0.17",
+      "EOS_pct_72": "0.19",
+      "IG_pct_0": "5.41",
+      "IG_pct_24": "4.06",
+      "IG_pct_48": "4.7",
+      "IG_pct_72": "3.5",
+      "HR_0": "115",
+      "HR_24": "112",
+      "HR_48": "109",
+      "HR_72": "109",
+      "Temp_0": "38.6",
+      "Temp_24": "39.2",
+      "Temp_48": "37.8",
+      "Temp_72": "38.6",
+      "RR_0": "23",
+      "RR_24": "23",
+      "RR_48": "22",
+      "RR_72": "21",
+      "SpO2_0": "95",
+      "SpO2_24": "92",
+      "SpO2_48": "94",
+      "SpO2_72": "96",
+      "outcome": "slow_responder"
+    },
+    {
+      "patient_id": "P005",
+      "age": "66",
+      "sex": "F",
+      "infection_site": "skin-soft-tissue",
+      "antibiotic_regimen": "pip-tazo",
+      "NEUT_pct_0": "82.44",
+      "NEUT_pct_24": "80.36",
+      "NEUT_pct_48": "78.12",
+      "NEUT_pct_72": "74.0",
+      "EOS_pct_0": "0.21",
+      "EOS_pct_24": "0.52",
+      "EOS_pct_48": "0.76",
+      "EOS_pct_72": "1.18",
+      "IG_pct_0": "2.77",
+      "IG_pct_24": "3.16",
+      "IG_pct_48": "2.06",
+      "IG_pct_72": "0.28",
+      "HR_0": "103",
+      "HR_24": "101",
+      "HR_48": "89",
+      "HR_72": "83",
+      "Temp_0": "38.4",
+      "Temp_24": "37.8",
+      "Temp_48": "38.0",
+      "Temp_72": "37.2",
+      "RR_0": "25",
+      "RR_24": "21",
+      "RR_48": "19",
+      "RR_72": "18",
+      "SpO2_0": "95",
+      "SpO2_24": "98",
+      "SpO2_48": "95",
+      "SpO2_72": "97",
+      "outcome": "improver"
+    },
+    {
+      "patient_id": "P006",
+      "age": "51",
+      "sex": "M",
+      "infection_site": "BSI",
+      "antibiotic_regimen": "linezolid",
+      "NEUT_pct_0": "88.66",
+      "NEUT_pct_24": "84.47",
+      "NEUT_pct_48": "80.38",
+      "NEUT_pct_72": "73.62",
+      "EOS_pct_0": "0.3",
+      "EOS_pct_24": "0.56",
+      "EOS_pct_48": "1.06",
+      "EOS_pct_72": "1.49",
+      "IG_pct_0": "3.17",
+      "IG_pct_24": "2.62",
+      "IG_pct_48": "1.59",
+      "IG_pct_72": "0.42",
+      "HR_0": "112",
+      "HR_24": "101",
+      "HR_48": "99",
+      "HR_72": "94",
+      "Temp_0": "38.8",
+      "Temp_24": "38.5",
+      "Temp_48": "37.5",
+      "Temp_72": "37.8",
+      "RR_0": "25",
+      "RR_24": "23",
+      "RR_48": "22",
+      "RR_72": "20",
+      "SpO2_0": "99",
+      "SpO2_24": "100",
+      "SpO2_48": "97",
+      "SpO2_72": "100",
+      "outcome": "improver"
+    },
+    {
+      "patient_id": "P007",
+      "age": "23",
+      "sex": "M",
+      "infection_site": "UTI",
+      "antibiotic_regimen": "ertapenem",
+      "NEUT_pct_0": "79.66",
+      "NEUT_pct_24": "75.72",
+      "NEUT_pct_48": "74.25",
+      "NEUT_pct_72": "69.4",
+      "EOS_pct_0": "0.13",
+      "EOS_pct_24": "0.62",
+      "EOS_pct_48": "1.19",
+      "EOS_pct_72": "1.69",
+      "IG_pct_0": "4.67",
+      "IG_pct_24": "2.9",
+      "IG_pct_48": "1.96",
+      "IG_pct_72": "0.56",
+      "HR_0": "93",
+      "HR_24": "87",
+      "HR_48": "81",
+      "HR_72": "76",
+      "Temp_0": "40.9",
+      "Temp_24": "38.3",
+      "Temp_48": "38.2",
+      "Temp_72": "38.0",
+      "RR_0": "22",
+      "RR_24": "22",
+      "RR_48": "21",
+      "RR_72": "20",
+      "SpO2_0": "96",
+      "SpO2_24": "98",
+      "SpO2_48": "99",
+      "SpO2_72": "98",
+      "outcome": "improver"
+    },
+    {
+      "patient_id": "P008",
+      "age": "64",
+      "sex": "M",
+      "infection_site": "BSI",
+      "antibiotic_regimen": "ceftriaxone",
+      "NEUT_pct_0": "84.73",
+      "NEUT_pct_24": "80.12",
+      "NEUT_pct_48": "79.28",
+      "NEUT_pct_72": "75.48",
+      "EOS_pct_0": "0.37",
+      "EOS_pct_24": "0.86",
+      "EOS_pct_48": "1.15",
+      "EOS_pct_72": "1.43",
+      "IG_pct_0": "5.5",
+      "IG_pct_24": "4.23",
+      "IG_pct_48": "3.48",
+      "IG_pct_72": "3.12",
+      "HR_0": "115",
+      "HR_24": "103",
+      "HR_48": "108",
+      "HR_72": "101",
+      "Temp_0": "38.9",
+      "Temp_24": "38.1",
+      "Temp_48": "38.3",
+      "Temp_72": "36.9",
+      "RR_0": "22",
+      "RR_24": "22",
+      "RR_48": "20",
+      "RR_72": "19",
+      "SpO2_0": "94",
+      "SpO2_24": "95",
+      "SpO2_48": "95",
+      "SpO2_72": "95",
+      "outcome": "improver"
+    },
+    {
+      "patient_id": "P009",
+      "age": "80",
+      "sex": "F",
+      "infection_site": "UTI",
+      "antibiotic_regimen": "amox-clav",
+      "NEUT_pct_0": "99",
+      "NEUT_pct_24": "99",
+      "NEUT_pct_48": "99",
+      "NEUT_pct_72": "99",
+      "EOS_pct_0": "0.0",
+      "EOS_pct_24": "0.02",
+      "EOS_pct_48": "0.0",
+      "EOS_pct_72": "0.0",
+      "IG_pct_0": "7.75",
+      "IG_pct_24": "8.81",
+      "IG_pct_48": "11.2",
+      "IG_pct_72": "10.56",
+      "HR_0": "130",
+      "HR_24": "125",
+      "HR_48": "133",
+      "HR_72": "125",
+      "Temp_0": "40.4",
+      "Temp_24": "38.7",
+      "Temp_48": "39.1",
+      "Temp_72": "39.9",
+      "RR_0": "22",
+      "RR_24": "24",
+      "RR_48": "27",
+      "RR_72": "27",
+      "SpO2_0": "85",
+      "SpO2_24": "84",
+      "SpO2_48": "83",
+      "SpO2_72": "84",
+      "outcome": "died"
+    },
+    {
+      "patient_id": "P010",
+      "age": "81",
+      "sex": "M",
+      "infection_site": "pneumonia",
+      "antibiotic_regimen": "vancomycin",
+      "NEUT_pct_0": "74.66",
+      "NEUT_pct_24": "78.99",
+      "NEUT_pct_48": "76.24",
+      "NEUT_pct_72": "76.27",
+      "EOS_pct_0": "0.13",
+      "EOS_pct_24": "0.13",
+      "EOS_pct_48": "0.11",
+      "EOS_pct_72": "0.06",
+      "IG_pct_0": "5.3",
+      "IG_pct_24": "4.29",
+      "IG_pct_48": "5.28",
+      "IG_pct_72": "6.06",
+      "HR_0": "113",
+      "HR_24": "110",
+      "HR_48": "117",
+      "HR_72": "118",
+      "Temp_0": "40.5",
+      "Temp_24": "39.5",
+      "Temp_48": "39.9",
+      "Temp_72": "39.8",
+      "RR_0": "23",
+      "RR_24": "24",
+      "RR_48": "25",
+      "RR_72": "25",
+      "SpO2_0": "95",
+      "SpO2_24": "95",
+      "SpO2_48": "94",
+      "SpO2_72": "94",
+      "outcome": "non_responder"
+    }
+  ],
+  "data_path": "projects/briefs/agentic-ai-workshop/data/cohort_cbc_vitals.csv",
+  "preview_path": "projects/briefs/agentic-ai-workshop/data/data-20260519-ae5722.preview.json",
+  "uploaded_at": "2026-05-19T03:35:00.000Z",
+  "library_path": "projects/briefs/agentic-ai-workshop/data/data-20260519-ae5722.preview.json"
+}

@@ -1,0 +1,52 @@
+{
+  "_artifact": "paper",
+  "schema_version": 1,
+  "id": "paperclip-pmid_41718052",
+  "source_ids": {
+    "pmid": "41718052",
+    "arxiv": null,
+    "openalex": null,
+    "s2": null,
+    "paperclip": null,
+    "doi": "10.3390/epidemiologia7010020"
+  },
+  "title": "The Global Impact of Sepsis: Epidemiology, Recognition, Management, and Health System Challenges.",
+  "authors": [
+    "Luigi La Via",
+    "Salvatore Ferlito",
+    "Maria Stella Di Modica",
+    "Andrea Marino",
+    "Giuseppe Nunnari",
+    "Bruno Cacopardo",
+    "Jerome Rene Lechien",
+    "Mario Lentini",
+    "Salvatore Lavalle",
+    "Giancarlo Carmelo Botto",
+    "Paolo Buscema",
+    "Loris Gruppuso",
+    "Antonino Maniaci"
+  ],
+  "year": 2026,
+  "journal": "Epidemiologia",
+  "abstract": "Reports 48.9 million incident sepsis cases and 11.0 million deaths in 2017, accounting for almost one-fifth of global deaths. Highlights inequalities in awareness, early treatment, and health system readiness across high- vs low-income settings.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/41718052",
+  "doi_url": "https://doi.org/10.3390/epidemiologia7010020",
+  "pdf_url": null,
+  "citation_count": null,
+  "sources": [
+    "pubmed"
+  ],
+  "library_path": "projects/briefs/agentic-ai-workshop/papers/paperclip-pmid_41718052.json",
+  "saved_at": "2026-05-19T03:30:00.000Z",
+  "relevance_score": 0.55,
+  "relevance_breakdown": {
+    "title": 0.5,
+    "abstract": 0.5
+  },
+  "search_batch_id": "batch_demo_workshop_v1",
+  "tags": [
+    "sepsis",
+    "global-health",
+    "epidemiology"
+  ]
+}

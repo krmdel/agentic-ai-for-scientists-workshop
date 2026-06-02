@@ -1,0 +1,46 @@
+{
+  "_artifact": "paper",
+  "schema_version": 1,
+  "id": "paperclip-pmid_41729625",
+  "source_ids": {
+    "pmid": "41729625",
+    "arxiv": null,
+    "openalex": null,
+    "s2": null,
+    "paperclip": null,
+    "doi": "10.1097/XEB.0000000000000556"
+  },
+  "title": "Facilitators and barriers when implementing antibiotic stewardship interventions in neonates at risk of early-onset sepsis.",
+  "authors": [
+    "Liesanne Ej van Veen",
+    "Sanne Wcm Janssen",
+    "Gerdien A Tramper-Stranders",
+    "Niek B Achten",
+    "Annemarie Mc van Rossum",
+    "Frans B Plotz",
+    "Erwin Ista"
+  ],
+  "year": 2026,
+  "journal": "JBI evidence implementation",
+  "abstract": "Identifies facilitators and barriers when implementing antibiotic stewardship interventions for early-onset sepsis in neonatal care. Despite evidence supporting various stewardship interventions, evidence on real-world implementation remains limited.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/41729625",
+  "doi_url": "https://doi.org/10.1097/XEB.0000000000000556",
+  "pdf_url": null,
+  "citation_count": null,
+  "sources": [
+    "pubmed"
+  ],
+  "library_path": "projects/briefs/agentic-ai-workshop/papers/paperclip-pmid_41729625.json",
+  "saved_at": "2026-05-19T03:30:00.000Z",
+  "relevance_score": 0.5571428571428572,
+  "relevance_breakdown": {
+    "title": 0.5,
+    "abstract": 0.5
+  },
+  "search_batch_id": "batch_demo_workshop_v1",
+  "tags": [
+    "antibiotic-stewardship",
+    "EOS",
+    "implementation"
+  ]
+}

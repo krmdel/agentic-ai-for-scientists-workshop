@@ -1,0 +1,44 @@
+{
+  "_artifact": "paper",
+  "schema_version": 1,
+  "id": "paperclip-pmid_41336571",
+  "source_ids": {
+    "pmid": "41336571",
+    "arxiv": null,
+    "openalex": null,
+    "s2": null,
+    "paperclip": null,
+    "doi": "10.1109/EMBC58623.2025.11253426"
+  },
+  "title": "Early Prediction of Positive Hospital-Acquired MRSA Screening using Deep Learning on Vital Signs Time Series.",
+  "authors": [
+    "Ali Barzegar Khanghah",
+    "Shaghayegh Chavoshian",
+    "Geoff Fernie",
+    "Atena Roshan Fekr"
+  ],
+  "year": 2025,
+  "journal": "IEEE EMBC Proceedings",
+  "abstract": "BiLSTM model on six vital signs (temperature, HR, systolic and diastolic BP, respiratory rate, SpO2) from MIMIC-IV predicts positive MRSA screening with F1=89.19% and AUROC=0.96 at a 1-day window. Recent fluctuations in vital signs hold predictive value for early MRSA detection before laboratory confirmation.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/41336571",
+  "doi_url": "https://doi.org/10.1109/EMBC58623.2025.11253426",
+  "pdf_url": null,
+  "citation_count": null,
+  "sources": [
+    "pubmed"
+  ],
+  "library_path": "projects/briefs/agentic-ai-workshop/papers/paperclip-pmid_41336571.json",
+  "saved_at": "2026-05-19T03:30:00.000Z",
+  "relevance_score": 0.7,
+  "relevance_breakdown": {
+    "title": 0.5,
+    "abstract": 0.5
+  },
+  "search_batch_id": "batch_demo_workshop_v1",
+  "tags": [
+    "vital-signs",
+    "MRSA",
+    "deep-learning",
+    "MIMIC-IV"
+  ]
+}

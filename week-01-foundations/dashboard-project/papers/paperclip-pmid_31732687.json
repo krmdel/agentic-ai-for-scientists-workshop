@@ -1,0 +1,46 @@
+{
+  "_artifact": "paper",
+  "schema_version": 1,
+  "id": "paperclip-pmid_31732687",
+  "source_ids": {
+    "pmid": "31732687",
+    "arxiv": null,
+    "openalex": null,
+    "s2": null,
+    "paperclip": null,
+    "doi": "10.1136/thoraxjnl-2018-212826"
+  },
+  "title": "Neutrophils in community-acquired pneumonia: parallels in dysfunction at the extremes of age.",
+  "authors": [
+    "Frances Susanna Grudzinska",
+    "Malcolm Brodlie",
+    "Barnaby R Scholefield",
+    "Thomas Jackson",
+    "Aaron Scott",
+    "David R Thickett",
+    "Elizabeth Sapey"
+  ],
+  "year": 2020,
+  "journal": "Thorax",
+  "abstract": "Community-acquired pneumonia disproportionately affects older adults and children. Neutrophils from older adults appear dysfunctional, with reduced ability to target infected tissue, poor phagocytic responses, and a reduced capacity to release neutrophil extracellular traps. During sepsis, a reduced response to G-CSF inhibits the release of immature neutrophils from the bone marrow.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/31732687",
+  "doi_url": "https://doi.org/10.1136/thoraxjnl-2018-212826",
+  "pdf_url": null,
+  "citation_count": null,
+  "sources": [
+    "pubmed"
+  ],
+  "library_path": "projects/briefs/agentic-ai-workshop/papers/paperclip-pmid_31732687.json",
+  "saved_at": "2026-05-19T03:30:00.000Z",
+  "relevance_score": 0.9,
+  "relevance_breakdown": {
+    "title": 0.5,
+    "abstract": 0.5
+  },
+  "search_batch_id": "batch_demo_workshop_v1",
+  "tags": [
+    "neutrophil",
+    "CAP",
+    "extremes-of-age"
+  ]
+}

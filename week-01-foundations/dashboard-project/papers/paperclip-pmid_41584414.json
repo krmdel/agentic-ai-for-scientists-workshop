@@ -1,0 +1,51 @@
+{
+  "_artifact": "paper",
+  "schema_version": 1,
+  "id": "paperclip-pmid_41584414",
+  "source_ids": {
+    "pmid": "41584414",
+    "arxiv": null,
+    "openalex": null,
+    "s2": null,
+    "paperclip": null,
+    "doi": "10.12865/CHSJ.51.03.11"
+  },
+  "title": "Inflammatory Markers in Pediatric Bacterial Sepsis vs. SARS-CoV-2 Infection: A Retrospective Study.",
+  "authors": [
+    "Antonio Andrusca",
+    "Cristina Maria Mihai",
+    "Cosmin Alexandru Pantazi",
+    "Simona Claudia Cambrea",
+    "Irina Ion",
+    "Emil Anton",
+    "Tatiana Chisnoiu",
+    "Ancuta Lupu",
+    "Mihaela Stoicescu",
+    "Florin Daniel Enache",
+    "Vasile Valeriu Lupu",
+    "Ileana Ion"
+  ],
+  "year": 2026,
+  "journal": "Current Health Sciences Journal",
+  "abstract": "Compares CRP, fibrinogen, ESR, and D-dimer between pediatric bacterial sepsis and SARS-CoV-2 infection to discern characteristic inflammatory profiles for timely and appropriate therapy.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/41584414",
+  "doi_url": "https://doi.org/10.12865/CHSJ.51.03.11",
+  "pdf_url": null,
+  "citation_count": null,
+  "sources": [
+    "pubmed"
+  ],
+  "library_path": "projects/briefs/agentic-ai-workshop/papers/paperclip-pmid_41584414.json",
+  "saved_at": "2026-05-19T03:30:00.000Z",
+  "relevance_score": 0.5307692307692308,
+  "relevance_breakdown": {
+    "title": 0.5,
+    "abstract": 0.5
+  },
+  "search_batch_id": "batch_demo_workshop_v1",
+  "tags": [
+    "pediatric-sepsis",
+    "SARS-CoV-2",
+    "inflammatory-markers"
+  ]
+}

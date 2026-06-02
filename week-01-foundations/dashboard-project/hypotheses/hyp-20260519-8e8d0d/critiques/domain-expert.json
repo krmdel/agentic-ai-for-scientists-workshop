@@ -1,0 +1,31 @@
+{
+  "_artifact": "persona-critique",
+  "schema_version": 1,
+  "hypothesis_id": "hyp-20260519-8e8d0d",
+  "persona": "Domain-expert",
+  "persona_slug": "domain-expert",
+  "confidence": "high",
+  "critiques": [
+    "Bone-marrow stress signal is real and pre-dates antibiotic effect: immature granulocytes (left shift) appear within hours of severe bacterial infection. This is the strongest a-priori biological case for the IG% leg of the hypothesis.",
+    "Eosinopenia at admission is a recognised but under-used predictor of bacterial sepsis \u2014 eosinophils sequester to lymphoid tissue under cortisol/cytokine drive. Recovery of EOS% from <0.5% toward 1-2% is a well-known clinical 'corner-turned' sign in ward medicine.",
+    "Elderly attenuated-response is the dominant clinical phenotype to plan for: 20-30% of older adults with bacterial pneumonia present afebrile and non-tachycardic (Grudzinska 2020). A model trained on younger ICU patients will mis-predict on the cohort that matters.",
+    "Antibiotic CHOICE matters: beta-lactams cause faster CBC normalisation than glycopeptides for the same MIC clearance. Failure to stratify by regimen will leak choice into 'response'."
+  ],
+  "counter_evidence": [
+    "Cao 2026 (pmid_41620755) HBP + PCT + CRP + SAA panel outperforms CBC-only panels for early pneumonia \u2014 the proposed CBC-only framing may be locally optimal but globally undercut by biomarker panels.",
+    "Kothari 2026 (pmid_42125305) argues the paradigm shift is to host-response profiling \u2014 presepsin / mRNA signatures will likely replace single CBC indices over the 2-3 year horizon."
+  ],
+  "suggested_experiments": [
+    "Test IG% slope (hours -> 24h -> 48h) as the primary feature, not absolute IG%. The slope is the bone-marrow response; the absolute number is noisier.",
+    "Test EOS% RECOVERY (slope from admission to 72 h) as a 'corner-turned' marker, not admission EOS%.",
+    "Plan a clinical pilot with the TUMCREATE imaging flow cytometer to ground-truth the IG% measurement against direct morphology."
+  ],
+  "raw_council_block": "STRONGEST_LEG: IG% slope as bone-marrow stress signal \u2014 well-supported, undermined only by 5-part-differential availability.\nWEAKEST_LEG: 'real-time' framing \u2014 even with point-of-care CBC, kinetics are minutes-to-hours, not real-time in the sensor-fusion sense.\nMUST_STRATIFY_BY: age band, antibiotic regimen class, infection site, immunocompetence.\nCONFIDENCE: 0.85 \u2014 the biology supports the claim; the operationalisation needs work.",
+  "supporting_paper_ids": [
+    "paperclip-pmid_41620755",
+    "paperclip-pmid_42125305",
+    "paperclip-pmid_31732687"
+  ],
+  "library_path": "projects/briefs/agentic-ai-workshop/hypotheses/hyp-20260519-8e8d0d/critiques/domain-expert.json",
+  "created_at": "2026-05-19T03:30:00.000Z"
+}

@@ -1,0 +1,44 @@
+{
+  "_artifact": "paper",
+  "schema_version": 1,
+  "id": "paperclip-pmid_38691554",
+  "source_ids": {
+    "pmid": "38691554",
+    "arxiv": null,
+    "openalex": null,
+    "s2": null,
+    "paperclip": null,
+    "doi": "10.1371/journal.pone.0299884"
+  },
+  "title": "A machine learning model for the early diagnosis of bloodstream infection in patients admitted to the pediatric intensive care unit.",
+  "authors": [
+    "Felipe Liporaci",
+    "Danilo Carlotti",
+    "Ana Carlotti"
+  ],
+  "year": 2024,
+  "journal": "PLoS ONE",
+  "abstract": "Retrospective PICU cohort (n=76, 8816 records). CBC differentials, CRP, and vital-signs time series 72 h before and on blood-culture day. The machine-committee model attained accuracy 99.33%, precision 98.89%, sensitivity 100%, specificity 98.46%. Temporal changes in vitals and laboratory values carry early-BSI signal.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/38691554",
+  "doi_url": "https://doi.org/10.1371/journal.pone.0299884",
+  "pdf_url": null,
+  "citation_count": null,
+  "sources": [
+    "pubmed"
+  ],
+  "library_path": "projects/briefs/agentic-ai-workshop/papers/paperclip-pmid_38691554.json",
+  "saved_at": "2026-05-19T03:30:00.000Z",
+  "relevance_score": 0.58,
+  "relevance_breakdown": {
+    "title": 0.5,
+    "abstract": 0.5
+  },
+  "search_batch_id": "batch_demo_workshop_v1",
+  "tags": [
+    "PICU",
+    "BSI",
+    "time-series",
+    "CBC",
+    "CRP"
+  ]
+}

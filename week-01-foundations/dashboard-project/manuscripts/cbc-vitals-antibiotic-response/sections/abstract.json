@@ -1,0 +1,24 @@
+{
+  "_artifact": "section-draft",
+  "schema_version": 1,
+  "id": "sect-cbc-vitals-antibiotic-response-abstract",
+  "manuscript_slug": "cbc-vitals-antibiotic-response",
+  "section_id": "abstract",
+  "section_type": "abstract",
+  "status": "draft",
+  "content_md": "## Abstract\n\n**Background.** Distinguishing patients who are responding to empirical antibiotic therapy from those who are not remains a daily bedside challenge across acute-care settings, with direct consequences for antibiotic-stewardship and downstream resistance trajectories \\cite{Devaguru2026} \\cite{vanVeen2026}. Conventional inflammatory markers such as C-reactive protein and procalcitonin lack the specificity required for precision antimicrobial stewardship \\cite{Kothari2026}, while machine-learning models built on routine bedside data show that vital-sign trajectories alone can predict bacterial-screening status with high discrimination \\cite{Khanghah2025} \\cite{Liporaci2024}. Whether *sequential* CBC indices \u2014 neutrophil percentage, eosinophil percentage, and immature granulocyte percentage \u2014 combined with vital-sign trends carry signal that varies systematically with the trajectory of *clinical improvement* under empirical antibiotic therapy has not been characterised in a unified longitudinal cohort.\n\n**Methods.** We assembled a 100-patient demo cohort with admission and 24/48/72-h CBC indices, vital signs (HR, temperature, respiratory rate, SpO2), infection site, and empiric antibiotic regimen. Outcome was scored on a four-level ordinal scale (improver, slow responder, non-responder, died). Trajectories were summarised by initial value and 0\u201372 h slope and compared across outcome strata.\n\n**Results.** Immature granulocyte percentage at admission stratifies cleanly across outcome ($\\Delta_{\\text{died-improver}} \\approx 5$ percentage points) and the gap *widens* by 48 h. Eosinophil recovery slope (EOS% from <0.5% toward 1\u20132% in survivors) emerges within 48 h in improvers but is absent in non-responders, echoing the literature on eosinopenia as a sepsis prognostic indicator \\cite{Tertess2026}. Temperature and heart rate trajectories normalise faster in improvers than in slow responders but are attenuated in the elderly ($\\geq 65$y) subgroup, consistent with prior reports of blunted febrile and tachycardic responses in older adults with bacterial pneumonia \\cite{Grudzinska2020}.\n\n**Conclusions.** In this demo cohort, sequential CBC indices and vital-sign trajectories carry signal that aligns with *clinical improvement* under empirical antibiotic therapy more cleanly than admission-only values. The pattern motivates a pre-registered prospective study with locked feature set, locked endpoint, and external-site validation \\cite{Hernandez2025} before bedside deployment is justified.\n",
+  "linked_figure_ids": [],
+  "linked_paper_ids": [
+    "Devaguru2026",
+    "vanVeen2026",
+    "Kothari2026",
+    "Khanghah2025",
+    "Liporaci2024",
+    "Tertess2026",
+    "Grudzinska2020",
+    "Hernandez2025"
+  ],
+  "version": 1,
+  "library_path": "projects/briefs/agentic-ai-workshop/manuscripts/cbc-vitals-antibiotic-response/sections/abstract.md",
+  "updated_at": "2026-05-19T03:30:00.000Z"
+}

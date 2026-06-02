@@ -1,0 +1,79 @@
+{
+  "collapse-filter": true,
+  "search": "",
+  "showTags": true,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "path:paper-notes",
+      "color": {
+        "a": 1,
+        "rgb": 5479590
+      }
+    },
+    {
+      "query": "path:concepts",
+      "color": {
+        "a": 1,
+        "rgb": 11250603
+      }
+    },
+    {
+      "query": "path:experiments",
+      "color": {
+        "a": 1,
+        "rgb": 14635040
+      }
+    },
+    {
+      "query": "path:data-notes",
+      "color": {
+        "a": 1,
+        "rgb": 7847479
+      }
+    },
+    {
+      "query": "path:drafts",
+      "color": {
+        "a": 1,
+        "rgb": 16770305
+      }
+    },
+    {
+      "query": "path:daily",
+      "color": {
+        "a": 1,
+        "rgb": 12369084
+      }
+    },
+    {
+      "query": "path:inbox",
+      "color": {
+        "a": 1,
+        "rgb": 11189196
+      }
+    },
+    {
+      "query": "path:identity",
+      "color": {
+        "a": 1,
+        "rgb": 16753219
+      }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": true,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1.4,
+  "lineSizeMultiplier": 1.2,
+  "collapse-forces": false,
+  "centerStrength": 0.6,
+  "repelStrength": 12,
+  "linkStrength": 1,
+  "linkDistance": 280,
+  "scale": 0.8220329477960605,
+  "close": false
+}

@@ -1,0 +1,11 @@
+{
+  "promptDelete": false,
+  "alwaysUpdateLinks": true,
+  "newLinkFormat": "shortest",
+  "showLineNumber": false,
+  "useTab": false,
+  "tabSize": 2,
+  "showFrontmatter": true,
+  "useMarkdownLinks": false,
+  "attachmentFolderPath": "_attachments"
+}

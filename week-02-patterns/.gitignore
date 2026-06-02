@@ -1,0 +1,9 @@
+.venv/
+.env.local
+sample_articles/*.pdf
+chroma_db/
+faiss_index/
+notebooks/sample_articles/
+notebooks/chroma_db/
+notebooks/eval/
+notebooks/faiss_index/
