@@ -834,11 +834,14 @@ That structure — **Thought -> Action -> Observation, repeat** — *is* ReAct. 
 
 ---
 
-## 5. Same thing, via LangChain `create_react_agent` — traced in LangSmith
+## 5. Watch the reasoning in LangSmith
 
-Now collapse the loop: same trace shape, but with parsing, retries, and `handle_parsing_errors` provided. And this time we'll **watch the reasoning in [LangSmith](https://smith.langchain.com)** as it runs.
+[LangSmith](https://smith.langchain.com) records every model call — the prompt, the output, latency, token counts — as a trace you can expand. There are two ways to wire it, and we use the robust one:
 
-**First, turn on tracing.** LangSmith records every LangChain step — each Thought, Action, tool call, latency, token count — as a nested trace, with no change to your agent code. Classic LangChain 0.3.x reads the **`LANGCHAIN_*`** env names (the website's newer `LANGSMITH_*` names are ignored on this version). Add `LANGCHAIN_API_KEY` as a Colab Secret (free key: smith.langchain.com -> Settings -> API Keys), then run the cell below. No key? It just stays off and everything still runs.
+- **(a) Wrap the raw Gemini client** with `langsmith.wrappers.wrap_gemini`. Every `generate_content` call traces directly, **independent of LangChain versions**. We wrap the same `client` our hand-built ReAct loop already uses, so each reasoning step shows up as its own trace. This is the reliable path on Colab.
+- **(b) LangChain's own tracer** for `create_react_agent`, which gives a single *nested* trace tree. Prettier, but version-sensitive — classic LangChain 0.3.x only talks to older `langsmith`, so on Colab it sometimes silently posts nothing. We show it last, with the caveat.
+
+**First, turn on tracing.** Add `LANGCHAIN_API_KEY` as a Colab Secret (free key: smith.langchain.com -> Settings -> API Keys), then run the cell below. No key? It just stays off and everything still runs.
 """),
 
     code("""# Optional LangSmith tracing. Safe to run with no key — tracing just stays off.
@@ -872,31 +875,61 @@ if ls_key:
     print("  key loaded : " + ls_key[:6] + "..." + ls_key[-4:] + "  (" + str(len(ls_key)) + " chars)")
     print("  project    : '" + os.environ["LANGCHAIN_PROJECT"] + "'   <- look for THIS name in LangSmith")
     print("  endpoint   : " + os.environ.get("LANGCHAIN_ENDPOINT", "https://api.smith.langchain.com (US default)"))
-    print("Now run the smoke-test cell below to confirm a trace actually lands.")
+    print("Now run the wrap_gemini cell below to start tracing the ReAct loop.")
 else:
     print("No LangSmith key found -> tracing OFF (everything still runs).")
     print("Fix: add a Colab Secret named LANGCHAIN_API_KEY (key icon, left sidebar),")
     print("     and toggle 'Notebook access' ON for it. Then re-run this cell -> it must print 'tracing ON'.")
 """),
 
-    md("""**Smoke test (run this before the agent).** Colab's tracer posts on a background thread, so if you glance at LangSmith too soon you see nothing. This cell fires one tiny LangChain call and **force-flushes** it — a definitive yes/no in ~2 seconds. If the project doesn't even appear after this, the key isn't loading (re-check the cell above printed `tracing ON`).
+    md("""**Wrap the raw client (the robust path).** `wrap_gemini` returns a drop-in client that traces every `generate_content` call straight to LangSmith — no LangChain in the path, so version mismatches can't silently swallow it. We re-bind `client` to the wrapped version, so the `run_react` loop you already built now traces **one run per step**.
 """),
 
-    code("""# LangSmith smoke test — one traced call, flushed immediately.
+    code("""# Robust tracing: wrap the google-genai client directly. Works regardless of LangChain version.
 import os
+from langsmith import wrappers
+
 if os.environ.get("LANGCHAIN_TRACING_V2") == "true":
-    from langchain_core.tracers.langchain import wait_for_all_tracers
-    _ = llm.invoke("Reply with the single word: ok")   # a real LangChain call -> a trace
-    wait_for_all_tracers()                              # force the background post NOW (no lag)
-    proj = os.environ.get("LANGCHAIN_PROJECT", "default")
-    print("Sent 1 test trace -> project '" + proj + "'.")
-    print("Open https://smith.langchain.com -> Tracing -> project '" + proj + "'.")
-    print("A run named 'ChatGoogleGenerativeAI' there = tracing works. Now run the agent below.")
+    try:
+        client = wrappers.wrap_gemini(client)   # re-bind: every client.models.generate_content now traces
+        print("wrap_gemini ON -> re-run the ReAct loop in the next cell; each step posts a trace.")
+    except (ImportError, AttributeError):
+        print("Your langsmith is too old for wrap_gemini.")
+        print("Run:  %pip install -q -U langsmith   then  Runtime > Restart session,  and re-run from the top.")
 else:
-    print("Tracing is OFF -> fix the key in the cell above first, then re-run this.")
+    print("Tracing is OFF -> add LANGCHAIN_API_KEY (cell above) first, then re-run this.")
 """),
 
-    md("""Now run the ReAct agent — if tracing is on, this exact run shows up in your LangSmith project:
+    md("""Now re-run the loop with the wrapped client — each Thought -> Action step becomes a separate `generate_content` trace in LangSmith:
+"""),
+
+    code("""answer = run_react(
+    "Who wrote the ReAct paper, and what year was the transformer paper published? "
+    "Then compute the difference in years."
+)
+print("\\n=== FINAL ANSWER ===")
+print(answer)
+
+# force the traces to ship before you look (background posting otherwise lags)
+import langsmith
+try:
+    langsmith.Client().flush()
+except Exception:
+    pass
+print("\\nOpen https://smith.langchain.com -> project '" +
+      os.environ.get("LANGCHAIN_PROJECT", "default") +
+      "'. Each loop step is a 'generate_content' run — expand one to read the model's Thought/Action.")
+"""),
+
+    md("""That's the reliable demo: you're now **watching the agent reason in real time** — one trace per step, with the exact prompt and output Gemini produced.
+
+---
+
+### Optional: the LangChain one-liner (nested trace tree)
+
+`create_react_agent` collapses the whole loop to one line and, *when its tracer fires*, gives a single **nested** trace — the AgentExecutor with each tool call nested beneath it. Run it if you like the tree view.
+
+> ⚠️ **Version caveat.** LangChain's native tracer (path b) only speaks to older `langsmith`, while this notebook pins classic `langchain-core 0.3.x`. On Colab — which pre-installs a newer `langsmith` for LangGraph — this tracer can run without error yet **post nothing**. If no trace appears from the cell below, that's the mismatch, and the `wrap_gemini` path above is your reliable answer. (To make path b work too: `%pip install -q "langsmith>=0.1.125,<0.4"`, restart, re-run.)
 """),
 
     code("""from langchain.agents import create_react_agent, AgentExecutor
@@ -947,11 +980,11 @@ except Exception:
     pass
 """),
 
-    md("""Same trace, same answer — but now the loop is one line. Because we built it ourselves first, the abstraction is transparent: when LangChain raises `OutputParserException: Could not parse LLM output`, you know it's the regex on `Action:` that failed, and `handle_parsing_errors=True` is what feeds the model a "fix your format" nudge instead of crashing.
+    md("""Same answer — but now the loop is one line. Because we built it ourselves first, the abstraction is transparent: when LangChain raises `OutputParserException: Could not parse LLM output`, you know it's the regex on `Action:` that failed, and `handle_parsing_errors=True` is what feeds the model a "fix your format" nudge instead of crashing.
 
-**Now open [smith.langchain.com](https://smith.langchain.com).** If you turned tracing on above, this exact `AgentExecutor` run is waiting there as a **trace tree** — expand it to see every Thought → Action → Observation, which tool was called with what input, the latency, and the token counts. That's how you debug a real agent: you *watch the trace* instead of guessing which step went wrong.
+**If** LangChain's tracer fired (see the version caveat above), open [smith.langchain.com](https://smith.langchain.com) and you'll find this `AgentExecutor` run as a single **nested trace tree** — expand it for every Thought → Action → Observation, which tool ran with what input, the latency, and token counts. If nothing showed up here, that's the `langsmith` version mismatch — the `wrap_gemini` traces from the loop above are your reliable view, and they carry the same information one run per step.
 
-> Only **LangChain** calls are traced. The hand-built ReAct loop in section 4 talks to the Gemini SDK directly, so it won't appear in LangSmith — but `create_react_agent` here (and the tool-calling agent in section 8) will.
+> The takeaway either way: you **watch the trace** instead of guessing which step went wrong. `wrap_gemini` traces the raw loop (one run per call); `create_react_agent` traces the LangChain agent (one nested tree) — same reasoning, two views.
 
 ---
 
