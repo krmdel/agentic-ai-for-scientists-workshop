@@ -868,11 +868,32 @@ if ls_key:
     endpoint = _secret("LANGCHAIN_ENDPOINT", "LANGSMITH_ENDPOINT")   # only needed for the EU region
     if endpoint:
         os.environ["LANGCHAIN_ENDPOINT"] = endpoint
-    print("LangSmith tracing ON  ->  project '" + os.environ["LANGCHAIN_PROJECT"] + "'")
-    print("Run the agent below, then open https://smith.langchain.com to watch the trace.")
+    print("LangSmith tracing ON")
+    print("  key loaded : " + ls_key[:6] + "..." + ls_key[-4:] + "  (" + str(len(ls_key)) + " chars)")
+    print("  project    : '" + os.environ["LANGCHAIN_PROJECT"] + "'   <- look for THIS name in LangSmith")
+    print("  endpoint   : " + os.environ.get("LANGCHAIN_ENDPOINT", "https://api.smith.langchain.com (US default)"))
+    print("Now run the smoke-test cell below to confirm a trace actually lands.")
 else:
-    print("No LANGCHAIN_API_KEY found -> tracing OFF (everything still runs).")
-    print("Add it as a Colab Secret (key icon, left sidebar) to see the reasoning in LangSmith.")
+    print("No LangSmith key found -> tracing OFF (everything still runs).")
+    print("Fix: add a Colab Secret named LANGCHAIN_API_KEY (key icon, left sidebar),")
+    print("     and toggle 'Notebook access' ON for it. Then re-run this cell -> it must print 'tracing ON'.")
+"""),
+
+    md("""**Smoke test (run this before the agent).** Colab's tracer posts on a background thread, so if you glance at LangSmith too soon you see nothing. This cell fires one tiny LangChain call and **force-flushes** it — a definitive yes/no in ~2 seconds. If the project doesn't even appear after this, the key isn't loading (re-check the cell above printed `tracing ON`).
+"""),
+
+    code("""# LangSmith smoke test — one traced call, flushed immediately.
+import os
+if os.environ.get("LANGCHAIN_TRACING_V2") == "true":
+    from langchain_core.tracers.langchain import wait_for_all_tracers
+    _ = llm.invoke("Reply with the single word: ok")   # a real LangChain call -> a trace
+    wait_for_all_tracers()                              # force the background post NOW (no lag)
+    proj = os.environ.get("LANGCHAIN_PROJECT", "default")
+    print("Sent 1 test trace -> project '" + proj + "'.")
+    print("Open https://smith.langchain.com -> Tracing -> project '" + proj + "'.")
+    print("A run named 'ChatGoogleGenerativeAI' there = tracing works. Now run the agent below.")
+else:
+    print("Tracing is OFF -> fix the key in the cell above first, then re-run this.")
 """),
 
     md("""Now run the ReAct agent — if tracing is on, this exact run shows up in your LangSmith project:
@@ -917,6 +938,13 @@ result = executor.invoke({
 })
 print("\\n=== FINAL ANSWER ===")
 print(result["output"])
+
+# Force this run to post to LangSmith now (otherwise it flushes a few seconds later).
+try:
+    from langchain_core.tracers.langchain import wait_for_all_tracers
+    wait_for_all_tracers()
+except Exception:
+    pass
 """),
 
     md("""Same trace, same answer — but now the loop is one line. Because we built it ourselves first, the abstraction is transparent: when LangChain raises `OutputParserException: Could not parse LLM output`, you know it's the regex on `Action:` that failed, and `handle_parsing_errors=True` is what feeds the model a "fix your format" nudge instead of crashing.
