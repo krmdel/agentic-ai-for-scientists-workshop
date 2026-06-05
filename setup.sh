@@ -85,10 +85,7 @@ link_specs=(
   "brief.md            $WEEK/brief.md"
   "talk-notes.md       $WEEK/talk-notes.md"
   "WORKSHOP_PROMPTS.md $WEEK/WORKSHOP_PROMPTS.md"
-  "supabase-schema.sql $WEEK/supabase-schema.sql"
-  "idea-inbox-starter  $WEEK/idea-inbox-starter"
   "assets              $WEEK/assets"
-  "scripts             $WEEK/scripts"
   "agentic-ai-workshop-week1.pdf   $WEEK/slides/agentic-ai-workshop-week1.pdf"
 )
 
@@ -117,50 +114,7 @@ done
 
 ok "Created $count symlinks in $BRIEF_DIR/"
 
-step "4. Seeding research_artifacts/ for the /lets-go demo"
-
-SEED_DIR="$WORKSHOP_REPO/$WEEK/researcher-profile-seed"
-RA="$ORGANON/research_artifacts"
-
-if [ ! -d "$SEED_DIR" ]; then
-  warn "No seed folder at $SEED_DIR — skipping"
-else
-  mkdir -p "$RA"
-
-  # Detect pre-existing user content (top-level ingestable files).
-  # If any exist, skip seeding to avoid overwriting the user's own work.
-  existing=$(find "$RA" -maxdepth 1 -type f \
-      \( -name '*.md' -o -name '*.txt' -o -name '*.pdf' -o -name '*.docx' \
-         -o -name '*.ipynb' -o -name '*.csv' -o -name '*.xlsx' \
-         -o -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' \) \
-      ! -name 'README.md' ! -name 'links.md' ! -name 'notes.md' 2>/dev/null | head -1)
-
-  if [ -n "$existing" ]; then
-    warn "$RA already has user content — not seeding."
-    warn "Move existing files aside and re-run if you want the demo seed."
-  else
-    # Flat-copy any seed documents present (/lets-go ingests top-level files only).
-    # The public repo ships NO personal documents — drop your own CV / research
-    # statements / papers into researcher-profile-seed/{cv,research-statements,
-    # publications}/ to reproduce the profile-seeding demo with your own profile.
-    seeded=0
-    while IFS= read -r f; do
-      cp "$f" "$RA/$(basename "$f")" && seeded=$((seeded + 1))
-    done < <(find "$SEED_DIR" -type f \
-        \( -name '*.md' -o -name '*.txt' -o -name '*.pdf' -o -name '*.docx' \
-           -o -name '*.csv' -o -name '*.xlsx' \) \
-        ! -name 'README.md' ! -name 'DEMO_WALKTHROUGH.md' 2>/dev/null)
-
-    if [ "$seeded" -gt 0 ]; then
-      ok "Seeded $seeded file(s) into $RA/"
-    else
-      warn "No personal seed documents found in $SEED_DIR (none ship in the public repo)."
-      warn "Add your own CV / statements / papers there and re-run to seed the /lets-go demo."
-    fi
-  fi
-fi
-
-step "5. Setting up .env"
+step "4. Setting up .env"
 
 if [ -f "$WORKSHOP_REPO/.env" ]; then
   ok ".env already exists — not overwriting"
@@ -172,7 +126,7 @@ else
   fi
 fi
 
-step "6. Done"
+step "5. Done"
 
 cat <<EOF
 
@@ -194,19 +148,7 @@ Next steps:
        $WORKSHOP_REPO/$WEEK/obsidian-vault/
      Press Cmd+G for the graph view.
 
-  4. For the /lets-go demo:
-       cd $ORGANON
-       claude
-       /lets-go               # type this in the Claude Code prompt
-
-     When the agent shows the welcome and asks for files, just say "ready" —
-     research_artifacts/ is already pre-populated from the workshop seed.
-     The agent will classify each file (CV, papers, research statements,
-     digest), extract structured data, and build research_context/
-     research-profile.md. Total ≈ 3–4 minutes.
-
   Full walkthrough:  SETUP.md
-  Demo walkthrough:  $WEEK/researcher-profile-seed/DEMO_WALKTHROUGH.md
   Troubleshooting:   docs/troubleshooting.md
 
 EOF

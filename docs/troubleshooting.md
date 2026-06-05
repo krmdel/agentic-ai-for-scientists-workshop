@@ -66,11 +66,7 @@ Open the graph view → click the gear icon (top-right of the graph panel) → *
 cat ~/Projects/agentic-ai-for-scientists-workshop/week-01-foundations/obsidian-vault/.obsidian/graph.json | grep colorGroups
 ```
 
-If `.obsidian/graph.json` is missing, run `_build_vault.py` again:
-
-```bash
-python3 ~/Projects/agentic-ai-for-scientists-workshop/week-01-foundations/scripts/_build_vault.py
-```
+If `.obsidian/graph.json` is missing, re-open the vault folder in Obsidian — the config ships with the repo under `week-01-foundations/obsidian-vault/.obsidian/`.
 
 ## Symlinks broken after renaming or moving the workshop repo
 

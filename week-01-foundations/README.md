@@ -2,8 +2,6 @@
 
 90-minute session covering the 200-year abstraction arc + Claude Code primitives + Organon as an agentic OS for scientists. Live build of an Idea Inbox CRUD app. Demo of the workshop's pre-populated dashboard project and Obsidian vault.
 
-> **Dry-running the demo before the workshop?** Use the isolated-clone path — it tests the full `/lets-go` flow without touching your real Organon install. Full instructions: [`researcher-profile-seed/DEMO_WALKTHROUGH.md`](researcher-profile-seed/DEMO_WALKTHROUGH.md) → "Path A — Isolated clone".
-
 ## Slides
 
 **Final deck:** [`slides/agentic-ai-workshop-week1.pdf`](slides/agentic-ai-workshop-week1.pdf) — the version used in the workshop.
@@ -22,7 +20,6 @@ week-01-foundations/
 ├── WORKSHOP_PROMPTS.md                ← The 5–6 Claude Code prompts for Block 4 (live build)
 ├── PORTABILITY.md                     ← (Legacy — pre-repo-split portability notes)
 ├── WORKSHOP-DESCRIPTION.md            ← Original brief description (kept for reference)
-├── supabase-schema.sql                ← DB schema for the live build
 ├── slides/                            ← Final workshop deck
 │   └── agentic-ai-workshop-week1.pdf
 ├── resources.md                       ← Curated videos, docs & reading for Week 1
@@ -49,13 +46,7 @@ week-01-foundations/
 │   ├── daily/                         ← 4 daily session logs
 │   ├── inbox/                         ← 5 quick-capture notes
 │   └── _attachments/                  ← Figure copies for vault embedding
-├── idea-inbox-starter/                ← Next.js + Tailwind starter for the Block 4 live build
-├── assets/                            ← Static figures for the deck
-└── scripts/
-    ├── _build_demo.py                 ← Regenerate papers + hypothesis + cohort + manuscript + runs
-    ├── _build_vault.py                ← Regenerate the Obsidian vault
-    ├── _finalize.py                   ← Wire generated figure into manuscript
-    └── _finalize_data.py              ← Build DataframeArtifact preview JSON for Data workspace
+└── assets/                            ← Static figures for the deck
 ```
 
 ## Block-by-block (90 min)
@@ -66,7 +57,7 @@ week-01-foundations/
 | 1. History | 12 | Jacquard → Ada → assembly → compilers → Python → AI milestones → Transformer → ChatGPT → 2024 | slides 6–18 |
 | 2. Agent atoms | 10 | Memory, identity, tools, learnings as real files on disk | slides 19–22 |
 | 3. Vibe coding | 8 | Bold opinion + honest caveats | slides 23–24 |
-| 4. Live build: Idea Inbox | 35 | Next.js + Supabase + Auth + Vercel via Claude Code | `idea-inbox-starter/`, `WORKSHOP_PROMPTS.md`, `supabase-schema.sql` |
+| 4. Live build: Idea Inbox | 35 | Next.js + Supabase + Auth + Vercel via Claude Code | `WORKSHOP_PROMPTS.md` |
 | 5. Organon teaser | 15 | Walk through the pre-populated dashboard + Obsidian vault | `dashboard-project/`, `obsidian-vault/` |
 | 6. Q&A + close | 5 | — | — |
 
@@ -77,26 +68,6 @@ Theme: **CBC + vital-sign trajectories as real-time indicators of antibiotic-res
 Hypothesis ID `hyp-20260519-8e8d0d`. Claim drawn from real research interest at TUMCREATE; cohort is synthetic but shaped against published outcome distributions. The four-persona council (Skeptic / Methodologist / Domain-expert / Biostatistician) is fully populated with critique + counter-evidence + suggested experiments + a synthesised research plan.
 
 Figure: bone marrow stress response (`fig-20260519-9a4a07`) — IG% spillover, neutrophilia, eosinophil sequestration. Generated via `viz-nano-banana` (scientific style, mechanism-schematic sub-style).
-
-## Regenerating from scratch
-
-The four scripts in `scripts/` produce everything in `dashboard-project/` deterministically (except the figure — Gemini outputs vary slightly each run).
-
-```bash
-cd ~/Projects/agentic-ai-for-scientists-workshop/week-01-foundations
-python3 scripts/_build_demo.py            # papers + hypothesis + cohort + manuscript + runs
-python3 scripts/_build_vault.py           # obsidian-vault/
-
-# Figure (regenerate):
-uv run ~/Projects/organon/.claude/skills/viz-nano-banana/scripts/generate_image.py \
-  --prompt "$(jq -r '.params' dashboard-project/figures/fig-*/index.json | head)" \
-  --filename "v1.png" --resolution "2K" --aspect-ratio "4:3"
-
-python3 scripts/_finalize.py              # wire figure → manuscript
-python3 scripts/_finalize_data.py         # rebuild dataframe preview
-```
-
-Note: the scripts were originally written assuming files under `projects/briefs/agentic-ai-workshop/` (Organon-relative). They still work if you run them from there via the symlinks. If you run them from this repo's `week-01-foundations/` directly, output lands here too (because the symlinks point both ways).
 
 ## Linking to Organon
 

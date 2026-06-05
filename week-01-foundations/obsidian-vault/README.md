@@ -33,7 +33,7 @@ through Organon lands as a node in this connected vault. The connections are the
 
 ## How this vault was generated
 
-A single Python script (`_build_vault.py`, sibling to this vault) wrote every note
+A single Python script wrote every note
 in one pass. In a real Organon session, these notes accumulate one at a time as the
 researcher works — each skill that produces a knowledge artifact prompts to also
 write it here via the [[concepts/obsidian-sync-gate|Obsidian Sync Gate]].

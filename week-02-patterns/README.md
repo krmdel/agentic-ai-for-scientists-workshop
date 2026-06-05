@@ -90,7 +90,7 @@ If you want to drop in your own corpus, replace `sample_articles/*.pdf` and re-r
 
 ## Eval data
 
-The five test queries for Notebook 03's comparison cell are **inlined directly in the notebook** (each annotated with the paper + section that holds the ground-truth answer), so the dense-vs-BM25-vs-hybrid comparison runs identically in Colab and locally with no external download. `eval/rag_questions.json` keeps the same set on disk for reference.
+The five test queries for Notebook 03's comparison cell are **inlined directly in the notebook** (each annotated with the paper + section that holds the ground-truth answer), so the dense-vs-BM25-vs-hybrid comparison runs identically in Colab and locally with no external download.
 
 ---
 
