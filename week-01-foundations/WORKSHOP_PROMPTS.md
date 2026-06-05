@@ -1,6 +1,6 @@
 # Workshop Prompts — Idea Inbox Live Build (Block 4)
 
-35 minutes on stage. Run from inside `idea-inbox-starter/` with Claude Code already open in a fresh session.
+35 minutes on stage. Scaffold a fresh Next.js app (`npx create-next-app@latest idea-inbox`) and run from inside it with Claude Code already open in a fresh session.
 
 The discipline: **one prompt per sub-block, refine once if needed, move on**. Don't get cute mid-build. Audience attention is precious.
 
@@ -77,7 +77,7 @@ vercel deploy --prod
 
 **Time observation:** shadcn install dominates Sub-block 2 wall-clock (~90 s of the 8 min budget). If that feels too long on stage, pre-install shadcn into the starter before workshop day:
 ```bash
-cd idea-inbox-starter
+cd idea-inbox
 npx shadcn@latest init --yes --defaults
 npx shadcn@latest add button textarea card --yes
 git add -A && git commit -m "pre-install shadcn"
@@ -88,15 +88,15 @@ Trade-off: less "from-scratch" feel, but tighter Block 4 timing.
 
 ## Pre-stage prep checklist (do day-of, ~30 min before)
 
-- [ ] Supabase project created and warm; schema applied via `supabase-schema.sql` in the SQL editor
-- [ ] Vercel project linked: `cd idea-inbox-starter && vercel link` (pick your account, accept defaults)
+- [ ] Supabase project created and warm; `ideas` table + RLS policies applied in the SQL editor
+- [ ] Vercel project linked: `cd idea-inbox && vercel link` (pick your account, accept defaults)
 - [ ] `.env.local` populated from `.env.example` — all four keys filled
 - [ ] `npm install` already run; node_modules cached
-- [ ] Claude Code launched in `idea-inbox-starter/`; sanity-check it sees the dir
+- [ ] Claude Code launched in `idea-inbox/`; sanity-check it sees the dir
 - [ ] Browser tab 1: `localhost:3000` (will refresh as we build)
 - [ ] Browser tab 2: your Vercel project dashboard (for the live deploy moment)
 - [ ] Browser tab 3: Supabase dashboard → Auth → Users (to show new sign-ups landing live)
-- [ ] Backup screen recording exists at `idea-inbox-starter/dry-run.mp4` — can switch to it instantly if anything snags
+- [ ] Backup screen recording exists at `idea-inbox/dry-run.mp4` — can switch to it instantly if anything snags
 - [ ] Phone in pocket (you'll visit the deployed URL on it for the audience moment)
 
 ---
@@ -204,4 +204,4 @@ Cut to Block 5.
 
 ## Dry-run gate
 
-Before workshop day, run all 6 sub-blocks end-to-end with a stopwatch from a fresh `idea-inbox-starter/` clone. Target: <35 min total. If >40 min, simplify Sub-block 5 (drop streaming, just save the full response).
+Before workshop day, run all 6 sub-blocks end-to-end with a stopwatch from a fresh `idea-inbox/` clone. Target: <35 min total. If >40 min, simplify Sub-block 5 (drop streaming, just save the full response).

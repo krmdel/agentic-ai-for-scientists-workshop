@@ -111,24 +111,13 @@ git checkout workshop-demo-snapshot
 - *Keep as a public demo*: move under `projects/briefs/` and update CLAUDE.md.
   The cohort CSV is synthetic and shareable.
 - *Strip it out*: `rm -rf projects/briefs/agentic-ai-workshop/` and
-  `rm -rf projects/briefs/agentic-ai-workshop/obsidian-vault/`. The brief, slides,
-  and `_build_*.py` scripts remain in git so you can regenerate later.
+  `rm -rf projects/briefs/agentic-ai-workshop/obsidian-vault/`. The brief and
+  slides remain in git.
 
 ---
 
 ## Regenerating from scratch
 
-If you need a fresh build (different cohort, different figure), the two scripts
-are deterministic except for the figure (Gemini outputs vary):
-
-```bash
-python3 projects/briefs/agentic-ai-workshop/_build_demo.py        # papers + hypothesis + cohort + manuscript + runs
-python3 projects/briefs/agentic-ai-workshop/_build_vault.py  # obsidian vault
-
-# Figure (regenerate):
-uv run .claude/skills/viz-nano-banana/scripts/generate_image.py \
-  --prompt "$(jq -r .params projects/briefs/agentic-ai-workshop/figures/fig-*/index.json | head)" \
-  --filename "v1.png" --resolution "2K" --aspect-ratio "4:3"
-
-python3 projects/briefs/agentic-ai-workshop/_finalize.py          # wire figure in
-```
+The deterministic build scripts that produce `dashboard-project/` and the
+Obsidian vault are not shipped in this public repo — they live in the private
+workshop repo. This repo ships the generated demo content directly.
