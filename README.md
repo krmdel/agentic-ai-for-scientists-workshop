@@ -24,7 +24,7 @@ Public materials and demos for a 6-week workshop series on Claude Code, [Organon
 
 - **00 — LangChain in 15 minutes** · **01 — Tool use & function calling** · **02 — ReAct, CoT & ToT** · **03 — RAG end-to-end** · **04 — Elasticsearch appendix** *(optional)*
 
-You only need an Anthropic API key (~$1 of credits covers all the notebooks). See [`week-02-patterns/README.md`](week-02-patterns/README.md) for the one-click Colab badges.
+You only need a free Google Gemini API key — the free tier covers all the notebooks (get one at https://aistudio.google.com/apikey, no credit card). See [`week-02-patterns/README.md`](week-02-patterns/README.md) for the one-click Colab badges.
 
 ## Run the demos locally (optional)
 

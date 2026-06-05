@@ -110,6 +110,6 @@ PORT=8770 npm run dev
 
 ## Still stuck
 
-- Workshop deck → `week-01-foundations/slides/agentic-ai-workshop-week1.pdf` (or the `.pptx`).
+- Workshop deck → `week-01-foundations/slides/agentic-ai-workshop-week1.pdf`.
 - Organon issues → see https://github.com/krmdel/organon and the README there.
 - Claude Code issues → https://code.claude.com/docs/en/overview (run `/help` inside Claude Code).

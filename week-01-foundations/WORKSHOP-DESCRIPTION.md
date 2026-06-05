@@ -8,7 +8,7 @@ Workshop materials for the first session of the *Agentic AI for Scientists* seri
 |---|---|
 | `brief.md` | Locked plan — goal, deliverables, acceptance criteria, timeline, risks |
 | `slides.md` | Marp deck (drafted in a later step) |
-| `slides.pdf` / `slides.pptx` | Exported deck for projector + screen-share fallback |
+| `slides.pdf` | Exported deck for projector + screen-share fallback |
 | `talk-notes.md` | Per-block speaker notes |
 | `WORKSHOP_PROMPTS.md` | The 6 prompts to run live during Block 4, timed |
 | `supabase-schema.sql` | Schema + RLS policies for the `ideas` table |

@@ -89,7 +89,6 @@ link_specs=(
   "idea-inbox-starter  $WEEK/idea-inbox-starter"
   "assets              $WEEK/assets"
   "scripts             $WEEK/scripts"
-  "agentic-ai-workshop-week1.pptx  $WEEK/slides/agentic-ai-workshop-week1.pptx"
   "agentic-ai-workshop-week1.pdf   $WEEK/slides/agentic-ai-workshop-week1.pdf"
 )
 

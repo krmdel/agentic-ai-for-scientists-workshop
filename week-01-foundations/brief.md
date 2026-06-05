@@ -30,7 +30,7 @@ The Idea Inbox we ship in 35 min is an LLM-powered CRUD app, not an agent. Block
 ## Deliverables
 
 - `slides.md` — Marp deck, ~28 slides, dark theme, scientist-aesthetic
-- `slides.pdf` + `slides.pptx` — exported for screen-share, projector, async
+- `slides.pdf` — exported for screen-share, projector, async
 - `talk-notes.md` — speaker notes per block, with the bold-opinion script for §3 and the honest narration for §4
 - `idea-inbox-starter/` — empty Next.js + shadcn + Tailwind shell, `npm install`-d, `npm run dev` boots clean
 - `WORKSHOP_PROMPTS.md` — exact 5–6 Claude Code prompts to run live during Block 4, timed

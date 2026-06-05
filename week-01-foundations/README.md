@@ -6,7 +6,7 @@
 
 ## Slides
 
-**Final deck:** [`slides/agentic-ai-workshop-week1.pptx`](slides/agentic-ai-workshop-week1.pptx) · [`slides/agentic-ai-workshop-week1.pdf`](slides/agentic-ai-workshop-week1.pdf) — the version used in the workshop. The PPTX is Google-Slides-compatible (macOS internal font references rewritten to Helvetica Neue so it imports cleanly → **Open with → Google Slides** for a browser-editable copy).
+**Final deck:** [`slides/agentic-ai-workshop-week1.pdf`](slides/agentic-ai-workshop-week1.pdf) — the version used in the workshop.
 
 ## Resources
 
@@ -24,7 +24,6 @@ week-01-foundations/
 ├── WORKSHOP-DESCRIPTION.md            ← Original brief description (kept for reference)
 ├── supabase-schema.sql                ← DB schema for the live build
 ├── slides/                            ← Final workshop deck
-│   ├── agentic-ai-workshop-week1.pptx
 │   └── agentic-ai-workshop-week1.pdf
 ├── resources.md                       ← Curated videos, docs & reading for Week 1
 ├── dashboard-project/                 ← Drop-in for Organon's projects/briefs/agentic-ai-workshop/

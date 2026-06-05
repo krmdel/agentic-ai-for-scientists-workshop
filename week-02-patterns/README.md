@@ -23,7 +23,7 @@
 
 ## Slides
 
-**Final deck:** [`slides/agentic-ai-workshop-week2.pptx`](slides/agentic-ai-workshop-week2.pptx) · [`slides/agentic-ai-workshop-week2.pdf`](slides/agentic-ai-workshop-week2.pdf) — the deck used in the workshop. Open the `.pptx` and **Open with → Google Slides** for a browser-editable copy.
+**Final deck:** [`slides/agentic-ai-workshop-week2.pdf`](slides/agentic-ai-workshop-week2.pdf) — the deck used in the workshop.
 
 ---
 
