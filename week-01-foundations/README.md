@@ -20,7 +20,6 @@ Curated companion material — videos, official docs, and reading for this week:
 week-01-foundations/
 ├── README.md                          ← this file
 ├── brief.md                           ← Workshop brief (goal, audience, time budget)
-├── talk-notes.md                      ← Speaker notes per block
 ├── WORKSHOP_PROMPTS.md                ← The 5–6 Claude Code prompts for Block 4 (live build)
 ├── PORTABILITY.md                     ← (Legacy — pre-repo-split portability notes)
 ├── WORKSHOP-DESCRIPTION.md            ← Original brief description (kept for reference)
