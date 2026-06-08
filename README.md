@@ -20,11 +20,12 @@ Public materials and demos for a 6-week workshop series on Claude Code, [Organon
 
 ## Start here
 
-**Week 2 is notebook-driven — open any notebook straight in Colab** (no install needed) from [`week-02-patterns/`](week-02-patterns/):
+**Weeks 2 and 3 are notebook-driven — open any notebook straight in Colab** (no install needed):
 
-- **00 — LangChain in 15 minutes** · **01 — Tool use & function calling** · **02 — ReAct, CoT & ToT** · **03 — RAG end-to-end** · **04 — Elasticsearch appendix** *(optional)*
+- **Week 2** — [`week-02-patterns/`](week-02-patterns/): LangChain in 15 minutes · tool use & function calling · ReAct, CoT & ToT · RAG end-to-end · Elasticsearch appendix *(optional)*
+- **Week 3** — [`week-03-multi-agent/`](week-03-multi-agent/): LangGraph core · Reflexion · agentic RAG · production graph · multi-agent deep research
 
-You only need a free Google Gemini API key — the free tier covers all the notebooks (get one at https://aistudio.google.com/apikey, no credit card). See [`week-02-patterns/README.md`](week-02-patterns/README.md) for the one-click Colab badges.
+You only need a free Google Gemini API key — the free tier covers all the notebooks (get one at https://aistudio.google.com/apikey, no credit card). Each week's README has the one-click Colab badges.
 
 ## Run the demos locally (optional)
 
@@ -46,7 +47,8 @@ agentic-ai-for-scientists-workshop/
 ├── .env.example             ← API keys template
 ├── docs/                    ← Claude Code, dashboard, Obsidian, troubleshooting
 ├── week-01-foundations/     ← GenAI Foundations for Scientists
-└── week-02-patterns/        ← AI Agents Fundamentals I — Patterns
+├── week-02-patterns/        ← AI Agents Fundamentals I — Patterns
+└── week-03-multi-agent/     ← AI Agents Fundamentals II — Multi-Agent Systems
 ```
 
 Each week folder is self-contained: deck, scripts, demo project, and notes.
@@ -68,6 +70,16 @@ See [week-01-foundations/README.md](week-01-foundations/README.md).
 - **RAG end-to-end** with LangChain: loaders → splitters → embeddings → **FAISS + Chroma** → BM25 → hybrid retrieval → citations.
 
 See [week-02-patterns/README.md](week-02-patterns/README.md).
+
+## Week 3 — Multi-agent systems (highlights)
+
+- **From loops to graphs:** the hand-rolled `while` loop becomes a **LangGraph** stateful graph (nodes, edges, typed state) that is inspectable, resumable, and persistent.
+- **Reflexion:** generate → reflect → revise, with the critique persisted in state so the output converges instead of drifting.
+- **Agentic RAG:** retrieval that grades itself and web-searches the gaps (Corrective / Self / Adaptive RAG).
+- **Production graph:** memory across turns, human-in-the-loop approval, durable `SqliteSaver` checkpoints, async fan-out.
+- **Multi-agent deep research:** a supervisor → worker capstone, mapped onto `open_deep_research`, GPT-Researcher, and **TriAgent**.
+
+See [week-03-multi-agent/README.md](week-03-multi-agent/README.md).
 
 ## Prerequisites
 
