@@ -22,6 +22,10 @@ Each notebook's first cell installs its dependencies and reads your `GOOGLE_API_
 
 > **First time on Colab?** Click any badge above, then `File → Save a copy in Drive` so your edits persist.
 
+## Recording
+
+📹 **Week 3 — Multi-Agent Systems (full session)** — recording on the way; the unlisted YouTube link will be added here after the session.
+
 ## API keys
 
 | Key | Required? | Free | Used by |
