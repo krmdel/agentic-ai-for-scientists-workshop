@@ -8,19 +8,19 @@ Everything runs on **Google Gemini's free tier** (`gemini-2.5-flash`) — no cre
 
 > **Version note.** Week 2 pinned *classic* LangChain **0.3.x** (for `AgentExecutor` / `create_react_agent`). Week 3 is the cutover to the **LangChain / LangGraph 1.0 GA** line. The concepts carry over; the imports change. See [resources.md](resources.md) for the map.
 
-## Run in Colab (nothing to install)
+## Open notebooks in Colab (one click)
 
 Each notebook's first cell installs its dependencies and reads your `GOOGLE_API_KEY` from Colab Secrets. Open in order:
 
-| # | Notebook | What you build | Colab |
-|---|----------|----------------|-------|
-| 00 | `00_langgraph_intro.ipynb` | State, nodes, edges, **conditional-edge cycles**, `stream()` | [Open](https://colab.research.google.com/github/krmdel/agentic-ai-for-scientists-workshop/blob/main/week-03-multi-agent/notebooks/00_langgraph_intro.ipynb) |
-| 01 | `01_reflexion_agent.ipynb` | generate → **reflect** → revise; a self-improving abstract | [Open](https://colab.research.google.com/github/krmdel/agentic-ai-for-scientists-workshop/blob/main/week-03-multi-agent/notebooks/01_reflexion_agent.ipynb) |
-| 02 | `02_agentic_rag.ipynb` | retrieve → **grade** → web-search fallback (CRAG / Self-RAG / Adaptive) | [Open](https://colab.research.google.com/github/krmdel/agentic-ai-for-scientists-workshop/blob/main/week-03-multi-agent/notebooks/02_agentic_rag.ipynb) |
-| 03 | `03_production_graph.ipynb` | `ToolNode` + **memory** + **human-in-the-loop** + `SqliteSaver` + async fan-out | [Open](https://colab.research.google.com/github/krmdel/agentic-ai-for-scientists-workshop/blob/main/week-03-multi-agent/notebooks/03_production_graph.ipynb) |
-| 04 | `04_multiagent_deep_research.ipynb` | **supervisor → worker** deep research → mapped onto open_deep_research + TriAgent | [Open](https://colab.research.google.com/github/krmdel/agentic-ai-for-scientists-workshop/blob/main/week-03-multi-agent/notebooks/04_multiagent_deep_research.ipynb) |
+| Notebook | Open in Colab | What it does |
+|---|---|---|
+| 00 — LangGraph Core | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krmdel/agentic-ai-for-scientists-workshop/blob/main/week-03-multi-agent/notebooks/00_langgraph_intro.ipynb) | State, nodes, edges, **conditional-edge cycles**, `stream()` — a graph is a loop you can pause. |
+| 01 — Reflexion Agent | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krmdel/agentic-ai-for-scientists-workshop/blob/main/week-03-multi-agent/notebooks/01_reflexion_agent.ipynb) | generate → **reflect** → revise; a self-improving paper abstract. |
+| 02 — Agentic RAG | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krmdel/agentic-ai-for-scientists-workshop/blob/main/week-03-multi-agent/notebooks/02_agentic_rag.ipynb) | retrieve → **grade** → web-search fallback (CRAG / Self-RAG / Adaptive). |
+| 03 — Production Graph | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krmdel/agentic-ai-for-scientists-workshop/blob/main/week-03-multi-agent/notebooks/03_production_graph.ipynb) | `ToolNode` + **memory** + **human-in-the-loop** + `SqliteSaver` + async fan-out. |
+| 04 — Multi-Agent Deep Research | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krmdel/agentic-ai-for-scientists-workshop/blob/main/week-03-multi-agent/notebooks/04_multiagent_deep_research.ipynb) | **supervisor → worker** deep research, mapped onto `open_deep_research` + TriAgent. |
 
-*(Colab links activate once this folder is published to the public repo.)*
+> **First time on Colab?** Click any badge above, then `File → Save a copy in Drive` so your edits persist.
 
 ## API keys
 
