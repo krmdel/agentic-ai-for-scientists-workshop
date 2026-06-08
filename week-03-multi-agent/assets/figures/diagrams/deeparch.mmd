@@ -1,0 +1,23 @@
+flowchart TB
+  subgraph A["single-iterative &nbsp;·&nbsp; one agent, one loop"]
+    direction LR
+    a1["agent"]:::blue --> a2{{"enough?"}}:::coral --> a1
+    a2 -->|"yes"| a3["report"]:::green
+  end
+  subgraph B["plan-execute &nbsp;·&nbsp; explicit plan, then run"]
+    direction LR
+    b1["planner"]:::coral --> b2["executor"]:::blue --> b3{{"replan?"}}:::coral --> b2
+    b3 -->|"done"| b4["report"]:::green
+  end
+  subgraph C["supervisor-worker &nbsp;·&nbsp; isolated parallel context"]
+    direction LR
+    c1["supervisor"]:::coral --> c2["worker pool"]:::blue --> c1
+    c1 -->|"synthesise"| c3["report"]:::green
+  end
+  A ~~~ B ~~~ C
+  classDef blue fill:#EAF1F9,stroke:#1F4F8B,stroke-width:2px,color:#1A1A1A;
+  classDef green fill:#EAF4EA,stroke:#4A7D3F,stroke-width:2px,color:#1A1A1A;
+  classDef coral fill:#F7E9E4,stroke:#C8553D,stroke-width:2px,color:#1A1A1A;
+  classDef ghost fill:#F7F8FA,stroke:#B8C0C8,stroke-width:1.5px,color:#6A6A6A;
+  classDef model fill:#1F4F8B,stroke:#16386A,stroke-width:2px,color:#FFFFFF;
+  classDef hard fill:#4A7D3F,stroke:#356029,stroke-width:2px,color:#FFFFFF;

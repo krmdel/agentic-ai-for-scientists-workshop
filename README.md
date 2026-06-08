@@ -5,7 +5,7 @@ Public materials and demos for a 6-week workshop series on Claude Code, [Organon
 **Instructor:** Kerem Delikoyun (TUMCREATE)
 **Substrate:** [Organon](https://github.com/krmdel/organon) — an agent-first Claude Code project template for scientists.
 
-> Materials are published **after each session is delivered**. Weeks 1–2 are available now; the remaining weeks are added as the series runs.
+> Materials are published **after each session is delivered**. Weeks 1–3 are available now; the remaining weeks are added as the series runs.
 
 ## Series overview
 
@@ -13,7 +13,7 @@ Public materials and demos for a 6-week workshop series on Claude Code, [Organon
 |---|---|---|
 | 1 | GenAI Foundations for Scientists | [`week-01-foundations/`](week-01-foundations/) ✅ |
 | 2 | AI Agents Fundamentals I — Patterns (tool use, function calling, CoT/ToT, ReAct, RAG) | [`week-02-patterns/`](week-02-patterns/) ✅ |
-| 3 | AI Agents Fundamentals II — Multi-Agent Systems | *upcoming* |
+| 3 | AI Agents Fundamentals II — Multi-Agent Systems | [`week-03-multi-agent/`](week-03-multi-agent/) ✅ |
 | 4 | Post-Training & Deployment of AI Agents | *upcoming* |
 | 5 | Evaluation and Benchmarking of AI Agents | *upcoming* |
 | 6 | Towards Full Autonomy | *upcoming* |

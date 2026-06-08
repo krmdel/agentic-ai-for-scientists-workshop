@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.sqlite
+checkpoints.sqlite
+.venv/
+.env
+.env.local

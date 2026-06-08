@@ -1,0 +1,17 @@
+flowchart TB
+  subgraph PIPE["TriAgent · 4-node pipeline"]
+    direction LR
+    SC["Scoping"]:::blue --> DA["Data Analysis<br/><span style='font-size:12px;color:#6A6A6A'>H2O AutoML</span>"]:::blue --> DR["Deep Research"]:::coral --> RP["Report<br/><span style='font-size:12px;color:#6A6A6A'>+PDF</span>"]:::green
+  end
+  subgraph DRN["Deep Research node · supervisor / worker"]
+    direction LR
+    SUP["supervisor"]:::coral --> RS["retrieval<br/>sub-agents"]:::coral --> FS["findings<br/>synthesis"]:::coral
+    FS -.->|"more gaps"| SUP
+  end
+  DR -.->|"expands into"| DRN
+  classDef blue fill:#EAF1F9,stroke:#1F4F8B,stroke-width:2px,color:#1A1A1A;
+  classDef green fill:#EAF4EA,stroke:#4A7D3F,stroke-width:2px,color:#1A1A1A;
+  classDef coral fill:#F7E9E4,stroke:#C8553D,stroke-width:2px,color:#1A1A1A;
+  classDef ghost fill:#F7F8FA,stroke:#B8C0C8,stroke-width:1.5px,color:#6A6A6A;
+  classDef model fill:#1F4F8B,stroke:#16386A,stroke-width:2px,color:#FFFFFF;
+  classDef hard fill:#4A7D3F,stroke:#356029,stroke-width:2px,color:#FFFFFF;

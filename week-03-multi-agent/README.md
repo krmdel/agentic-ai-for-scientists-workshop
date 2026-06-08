@@ -1,0 +1,68 @@
+# Week 3 — From Loops to Graphs (LangGraph)
+
+**Agentic AI for Scientists** · Week 3 · *AI Agents Fundamentals II*
+
+Week 2 ended with a hard truth: **the control loop is the agent**. But that hand-rolled `while` loop couldn't pause, couldn't branch cleanly, and forgot everything when the cell ended. Week 3 earns the next abstraction — **LangGraph**: agents as **stateful graphs** (nodes = steps, edges = control flow, a typed state threaded through), so the loop becomes inspectable, resumable, and persistent.
+
+Everything runs on **Google Gemini's free tier** (`gemini-2.5-flash`) — no credit card.
+
+> **Version note.** Week 2 pinned *classic* LangChain **0.3.x** (for `AgentExecutor` / `create_react_agent`). Week 3 is the cutover to the **LangChain / LangGraph 1.0 GA** line. The concepts carry over; the imports change. See [resources.md](resources.md) for the map.
+
+## Run in Colab (nothing to install)
+
+Each notebook's first cell installs its dependencies and reads your `GOOGLE_API_KEY` from Colab Secrets. Open in order:
+
+| # | Notebook | What you build | Colab |
+|---|----------|----------------|-------|
+| 00 | `00_langgraph_intro.ipynb` | State, nodes, edges, **conditional-edge cycles**, `stream()` | [Open](https://colab.research.google.com/github/krmdel/agentic-ai-for-scientists-workshop/blob/main/week-03-multi-agent/notebooks/00_langgraph_intro.ipynb) |
+| 01 | `01_reflexion_agent.ipynb` | generate → **reflect** → revise; a self-improving abstract | [Open](https://colab.research.google.com/github/krmdel/agentic-ai-for-scientists-workshop/blob/main/week-03-multi-agent/notebooks/01_reflexion_agent.ipynb) |
+| 02 | `02_agentic_rag.ipynb` | retrieve → **grade** → web-search fallback (CRAG / Self-RAG / Adaptive) | [Open](https://colab.research.google.com/github/krmdel/agentic-ai-for-scientists-workshop/blob/main/week-03-multi-agent/notebooks/02_agentic_rag.ipynb) |
+| 03 | `03_production_graph.ipynb` | `ToolNode` + **memory** + **human-in-the-loop** + `SqliteSaver` + async fan-out | [Open](https://colab.research.google.com/github/krmdel/agentic-ai-for-scientists-workshop/blob/main/week-03-multi-agent/notebooks/03_production_graph.ipynb) |
+| 04 | `04_multiagent_deep_research.ipynb` | **supervisor → worker** deep research → mapped onto open_deep_research + TriAgent | [Open](https://colab.research.google.com/github/krmdel/agentic-ai-for-scientists-workshop/blob/main/week-03-multi-agent/notebooks/04_multiagent_deep_research.ipynb) |
+
+*(Colab links activate once this folder is published to the public repo.)*
+
+## API keys
+
+| Key | Required? | Free | Used by |
+|-----|-----------|------|---------|
+| `GOOGLE_API_KEY` | **Yes** | [aistudio.google.com/apikey](https://aistudio.google.com/apikey) | every notebook (the LLM) |
+| `TAVILY_API_KEY` | Optional | [app.tavily.com](https://app.tavily.com) (1,000/mo) | NB02 web-search fallback (mock runs without it) |
+| `LANGSMITH_API_KEY` | Optional | [smith.langchain.com](https://smith.langchain.com) | NB01–04 tracing — **use `LANGSMITH_*` names** (1.x), not `LANGCHAIN_*` |
+
+In Colab: add each under the 🔑 **Secrets** panel (left sidebar) with *Notebook access* on. Locally: `cp .env.example .env` and fill it in.
+
+## Run locally
+
+```bash
+bash setup.sh            # installs the LangGraph 1.x stack (Python 3.10+; use a fresh venv)
+cp .env.example .env     # add your GOOGLE_API_KEY
+jupyter lab              # open notebooks/
+```
+
+## Slides
+
+The talk deck (25 slides, native diagrams) lives in [`slides/`](slides/):
+
+- **[`slides/agentic-ai-workshop-week3.pptx`](slides/agentic-ai-workshop-week3.pptx)** — editable PowerPoint
+- **[`slides/agentic-ai-workshop-week3.pdf`](slides/agentic-ai-workshop-week3.pdf)** — for quick viewing
+
+Source: `scripts/build_pptx.py` (native python-pptx — re-run to regenerate). Block-by-block narration is in [`talk-notes.md`](talk-notes.md).
+
+## The arc
+
+```
+00  LangGraph core ........ a graph is a loop you can pause
+01  Reflexion ............. generate → reflect → revise, until good enough
+02  Agentic RAG ........... retrieval that grades itself and web-searches the gaps
+03  Production ............ memory, human-in-the-loop, durable state, parallelism
+04  Multi-agent ........... supervisor + workers → the shape behind real deep-research systems
+```
+
+## What's next
+
+Week 4 builds on these graphs toward evaluation and domain agents. The capstone (NB04) maps directly onto production systems — [`open_deep_research`](https://github.com/langchain-ai/open_deep_research), [GPT-Researcher](https://github.com/assafelovic/gpt-researcher), and the instructor's own [TriAgent](https://github.com/krmdel/TriAgent) (clinical biomarker discovery + literature validation).
+
+## License
+
+Course materials: **CC BY 4.0**. Code cells: MIT (reuse freely with attribution).
