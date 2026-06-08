@@ -42,12 +42,7 @@ jupyter lab              # open notebooks/
 
 ## Slides
 
-The talk deck (25 slides, native diagrams) lives in [`slides/`](slides/):
-
-- **[`slides/agentic-ai-workshop-week3.pptx`](slides/agentic-ai-workshop-week3.pptx)** — editable PowerPoint
-- **[`slides/agentic-ai-workshop-week3.pdf`](slides/agentic-ai-workshop-week3.pdf)** — for quick viewing
-
-Source: `scripts/build_pptx.py` (native python-pptx — re-run to regenerate). Block-by-block narration is in [`talk-notes.md`](talk-notes.md).
+**Final deck:** [`slides/agentic-ai-workshop-week3.pdf`](slides/agentic-ai-workshop-week3.pdf), the deck used in the workshop.
 
 ## The arc
 
