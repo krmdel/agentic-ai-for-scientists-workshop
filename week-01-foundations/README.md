@@ -6,6 +6,10 @@
 
 **Final deck:** [`slides/agentic-ai-workshop-week1.pdf`](slides/agentic-ai-workshop-week1.pdf) — the version used in the workshop.
 
+## Recording
+
+📹 **[Week 1 — Foundations (full session)](https://youtu.be/wNKf4KWJnLA)** — unlisted YouTube; anyone with the link can watch.
+
 ## Resources
 
 Curated companion material — videos, official docs, and reading for this week: **[`resources.md`](resources.md)**.

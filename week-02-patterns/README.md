@@ -21,6 +21,12 @@
 
 ---
 
+## Recording
+
+📹 **[Week 2 — Patterns (full session)](https://youtu.be/_r6W9UqLn1s)** — unlisted YouTube; anyone with the link can watch.
+
+---
+
 ## Slides
 
 **Final deck:** [`slides/agentic-ai-workshop-week2.pdf`](slides/agentic-ai-workshop-week2.pdf) — the deck used in the workshop.
