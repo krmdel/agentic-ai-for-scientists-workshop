@@ -7,6 +7,8 @@ Public materials and demos for a 6-week workshop series on Claude Code, [Organon
 
 > Materials are published **after each session is delivered**. Weeks 1–3 are available now; the remaining weeks are added as the series runs.
 
+📄 **[Workshop overview (PDF)](Agentic-AI-for-Scientists-Workshop-Overview.pdf)** — the full 6-week series description, learning outcomes, speaker bio, and logistics.
+
 ## Series overview
 
 | Week | Title | Materials |
