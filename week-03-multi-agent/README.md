@@ -24,7 +24,7 @@ Each notebook's first cell installs its dependencies and reads your `GOOGLE_API_
 
 ## Recording
 
-📹 **Week 3 — Multi-Agent Systems (full session)** — recording on the way; the unlisted YouTube link will be added here after the session.
+📹 **[Week 3 — Multi-Agent Systems (full session)](https://youtu.be/ditHGU1hauU)** — unlisted YouTube; anyone with the link can watch.
 
 ## API keys
 
