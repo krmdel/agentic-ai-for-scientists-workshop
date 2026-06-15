@@ -5,7 +5,7 @@ Public materials and demos for a 6-week workshop series on Claude Code, [Organon
 **Instructor:** Kerem Delikoyun (TUMCREATE)
 **Substrate:** [Organon](https://github.com/krmdel/organon) — an agent-first Claude Code project template for scientists.
 
-> Materials are published **after each session is delivered**. Weeks 1–3 are available now; the remaining weeks are added as the series runs.
+> Materials are published **after each session is delivered**. Weeks 1–4 are available now; the remaining weeks are added as the series runs.
 
 📄 **[Workshop overview (PDF)](Agentic-AI-for-Scientists-Workshop-Overview.pdf)** — the full 6-week series description, learning outcomes, speaker bio, and logistics.
 
@@ -16,18 +16,19 @@ Public materials and demos for a 6-week workshop series on Claude Code, [Organon
 | 1 | GenAI Foundations for Scientists | [`week-01-foundations/`](week-01-foundations/) ✅ |
 | 2 | AI Agents Fundamentals I — Patterns (tool use, function calling, CoT/ToT, ReAct, RAG) | [`week-02-patterns/`](week-02-patterns/) ✅ |
 | 3 | AI Agents Fundamentals II — Multi-Agent Systems | [`week-03-multi-agent/`](week-03-multi-agent/) ✅ |
-| 4 | Post-Training & Deployment of AI Agents | *upcoming* |
+| 4 | Post-Training & Deployment of AI Agents | [`week-04-post-training/`](week-04-post-training/) ✅ |
 | 5 | Evaluation and Benchmarking of AI Agents | *upcoming* |
 | 6 | Towards Full Autonomy | *upcoming* |
 
 ## Start here
 
-**Weeks 2 and 3 are notebook-driven — open any notebook straight in Colab** (no install needed):
+**Weeks 2, 3 and 4 are notebook-driven — open any notebook straight in Colab** (no install needed):
 
 - **Week 2** — [`week-02-patterns/`](week-02-patterns/): LangChain in 15 minutes · tool use & function calling · ReAct, CoT & ToT · RAG end-to-end · Elasticsearch appendix *(optional)*
 - **Week 3** — [`week-03-multi-agent/`](week-03-multi-agent/): LangGraph core · Reflexion · agentic RAG · production graph · multi-agent deep research
+- **Week 4** — [`week-04-post-training/`](week-04-post-training/): dataset prep · full SFT · LoRA · QLoRA · deploy & inference *(open in Colab with a free GPU runtime)*
 
-You only need a free Google Gemini API key — the free tier covers all the notebooks (get one at https://aistudio.google.com/apikey, no credit card). Each week's README has the one-click Colab badges.
+Weeks 2 and 3 run entirely on a free Google Gemini API key (get one at https://aistudio.google.com/apikey, no credit card). Week 4 trains on a free Colab GPU and only needs the Gemini key for the dataset-prep notebook. Each week's README has the one-click Colab badges.
 
 ## Run the demos locally (optional)
 
@@ -50,7 +51,8 @@ agentic-ai-for-scientists-workshop/
 ├── docs/                    ← Claude Code, dashboard, Obsidian, troubleshooting
 ├── week-01-foundations/     ← GenAI Foundations for Scientists
 ├── week-02-patterns/        ← AI Agents Fundamentals I — Patterns
-└── week-03-multi-agent/     ← AI Agents Fundamentals II — Multi-Agent Systems
+├── week-03-multi-agent/     ← AI Agents Fundamentals II — Multi-Agent Systems
+└── week-04-post-training/   ← Post-Training & Deployment
 ```
 
 Each week folder is self-contained: deck, scripts, demo project, and notes.
@@ -82,6 +84,16 @@ See [week-02-patterns/README.md](week-02-patterns/README.md).
 - **Multi-agent deep research:** a supervisor → worker capstone, mapped onto `open_deep_research`, GPT-Researcher, and **TriAgent**.
 
 See [week-03-multi-agent/README.md](week-03-multi-agent/README.md).
+
+## Week 4 — Post-Training & Deployment (highlights)
+
+- **Why fine-tune, and the post-training stages:** continued pretraining → supervised fine-tuning → alignment, and where full FT / LoRA / QLoRA each fit.
+- **Three ways to fine-tune, one notebook each:** full SFT, **LoRA** (low-rank adapters), and **QLoRA** (4-bit base + adapters) — all on **Unsloth + TRL**, the same code with one flag flipped.
+- **The data formats that teach behaviour:** chat templates, tool-use tokens (`<tool_call>` / `<tool_response>`), and reasoning traces (`<think>`).
+- **Deployment:** serve what you trained — local `transformers`, **vLLM**, **Ollama** / llama.cpp, plus the cloud landscape (Ray Serve, HF Endpoints, SageMaker, Bedrock).
+- Plus a **Hugging Face Jobs** path (real training and batch inference) and an **agent-driven** path that drives train / eval / infer from Claude Code.
+
+See [week-04-post-training/README.md](week-04-post-training/README.md).
 
 ## Prerequisites
 
