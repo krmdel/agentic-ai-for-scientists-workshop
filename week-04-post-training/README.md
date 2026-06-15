@@ -84,6 +84,10 @@ point at (set `MODEL_PATH` to your Hub id).
 
 **Final deck:** [`slides/agentic-ai-workshop-week4.pdf`](slides/agentic-ai-workshop-week4.pdf), the deck used in the workshop.
 
+## Resources
+
+Curated companion material — lectures (Karpathy, Umar Jamil), the Unsloth/PEFT/TRL docs, the LoRA + QLoRA + InstructGPT papers, deployment tools, and more: **[`resources.md`](resources.md)**.
+
 ## Notes & honesty
 
 - **Demo budgets.** Training notebooks use `max_steps=60` so each finishes in a few minutes on a T4. Set `max_steps=-1` + the full dataset for a real (multi-hour) run.

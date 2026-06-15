@@ -59,6 +59,10 @@ week-05-evaluation/
 
 **Final deck:** [`slides/agentic-ai-workshop-week5.pdf`](slides/agentic-ai-workshop-week5.pdf), the deck used in the workshop.
 
+## Resources
+
+Curated companion material — eval talks, Hamel Husain's "Your AI Product Needs Evals", the HF Evaluation Guidebook, the LLM-as-judge + benchmark papers (MT-Bench, PubMedQA, SWE-bench, GAIA), and eval frameworks: **[`resources.md`](resources.md)**.
+
 ## Notes & honesty
 
 - **Reference numbers.** NB00's base-vs-fine-tuned table ships representative reference scores so the comparison is visible even if you only evaluated one model this session. Point `CANDIDATES` at your Week 4 models and rerun for your real numbers.
