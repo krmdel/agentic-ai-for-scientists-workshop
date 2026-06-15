@@ -5,7 +5,7 @@ Public materials and demos for a 6-week workshop series on Claude Code, [Organon
 **Instructor:** Kerem Delikoyun (TUMCREATE)
 **Substrate:** [Organon](https://github.com/krmdel/organon) — an agent-first Claude Code project template for scientists.
 
-> Materials are published **after each session is delivered**. Weeks 1–4 are available now; the remaining weeks are added as the series runs.
+> Materials are published **after each session is delivered**. Weeks 1–5 are available now; the remaining weeks are added as the series runs.
 
 📄 **[Workshop overview (PDF)](Agentic-AI-for-Scientists-Workshop-Overview.pdf)** — the full 6-week series description, learning outcomes, speaker bio, and logistics.
 
@@ -17,18 +17,19 @@ Public materials and demos for a 6-week workshop series on Claude Code, [Organon
 | 2 | AI Agents Fundamentals I — Patterns (tool use, function calling, CoT/ToT, ReAct, RAG) | [`week-02-patterns/`](week-02-patterns/) ✅ |
 | 3 | AI Agents Fundamentals II — Multi-Agent Systems | [`week-03-multi-agent/`](week-03-multi-agent/) ✅ |
 | 4 | Post-Training & Deployment of AI Agents | [`week-04-post-training/`](week-04-post-training/) ✅ |
-| 5 | Evaluation and Benchmarking of AI Agents | *upcoming* |
+| 5 | Evaluation and Benchmarking of AI Agents | [`week-05-evaluation/`](week-05-evaluation/) ✅ |
 | 6 | Towards Full Autonomy | *upcoming* |
 
 ## Start here
 
-**Weeks 2, 3 and 4 are notebook-driven — open any notebook straight in Colab** (no install needed):
+**Weeks 2–5 are notebook-driven — open any notebook straight in Colab** (no install needed):
 
 - **Week 2** — [`week-02-patterns/`](week-02-patterns/): LangChain in 15 minutes · tool use & function calling · ReAct, CoT & ToT · RAG end-to-end · Elasticsearch appendix *(optional)*
 - **Week 3** — [`week-03-multi-agent/`](week-03-multi-agent/): LangGraph core · Reflexion · agentic RAG · production graph · multi-agent deep research
 - **Week 4** — [`week-04-post-training/`](week-04-post-training/): dataset prep · full SFT · LoRA · QLoRA · deploy & inference *(open in Colab with a free GPU runtime)*
+- **Week 5** — [`week-05-evaluation/`](week-05-evaluation/): eval vs ground truth · LLM-as-judge · benchmarks · custom eval harness *(open in Colab with a free GPU runtime)*
 
-Weeks 2 and 3 run entirely on a free Google Gemini API key (get one at https://aistudio.google.com/apikey, no credit card). Week 4 trains on a free Colab GPU and only needs the Gemini key for the dataset-prep notebook. Each week's README has the one-click Colab badges.
+Weeks 2 and 3 run entirely on a free Google Gemini API key (get one at https://aistudio.google.com/apikey, no credit card). Weeks 4 and 5 run on a free Colab GPU and only need the Gemini key for one notebook each. Each week's README has the one-click Colab badges.
 
 ## Run the demos locally (optional)
 
@@ -52,7 +53,8 @@ agentic-ai-for-scientists-workshop/
 ├── week-01-foundations/     ← GenAI Foundations for Scientists
 ├── week-02-patterns/        ← AI Agents Fundamentals I — Patterns
 ├── week-03-multi-agent/     ← AI Agents Fundamentals II — Multi-Agent Systems
-└── week-04-post-training/   ← Post-Training & Deployment
+├── week-04-post-training/   ← Post-Training & Deployment
+└── week-05-evaluation/      ← Evaluation & Benchmarking
 ```
 
 Each week folder is self-contained: deck, scripts, demo project, and notes.
@@ -94,6 +96,16 @@ See [week-03-multi-agent/README.md](week-03-multi-agent/README.md).
 - Plus a **Hugging Face Jobs** path (real training and batch inference) and an **agent-driven** path that drives train / eval / infer from Claude Code.
 
 See [week-04-post-training/README.md](week-04-post-training/README.md).
+
+## Week 5 — Evaluation & Benchmarking (highlights)
+
+- **Why eval is the hard part:** a model you can't measure is a model you can't trust — and a lower training loss does not mean better answers.
+- **Ground truth first:** field-level metrics (JSON validity, disease accuracy, symptom/treatment F1) and the **base-vs-fine-tuned delta** that proves the Week 4 tuning worked.
+- **LLM-as-judge, honestly:** pointwise and pairwise judging for what has no F1 (faithfulness, safety, tone), plus **position-bias defense** and human calibration — an unvalidated judge is a vibe, not a metric.
+- **Benchmarks without fooling yourself:** run **PubMedQA** against its majority-class baseline, and learn to read agent-benchmark claims (SWE-bench, GAIA) critically.
+- **Your own harness:** an assertion-based **regression suite** with a real safety check, turned into a CI gate — eval-driven development for models.
+
+See [week-05-evaluation/README.md](week-05-evaluation/README.md).
 
 ## Prerequisites
 

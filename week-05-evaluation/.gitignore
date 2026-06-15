@@ -1,0 +1,16 @@
+# secrets / local env
+.env
+.env.local
+
+# python / jupyter
+.venv/
+venv/
+__pycache__/
+.ipynb_checkpoints/
+
+# models / data pulled or produced locally
+qwen3-medquad-*/
+data/
+
+# os cruft
+.DS_Store
