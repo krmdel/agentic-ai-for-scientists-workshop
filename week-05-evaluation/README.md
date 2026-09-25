@@ -19,6 +19,10 @@ Run in order. NB00 picks up the models you trained in Week 4 (falling back to th
 | 02 | `02_benchmarks.ipynb` | run **PubMedQA** honestly + map the agent-benchmark landscape (SWE-bench/GAIA/AgentBench) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krmdel/agentic-ai-for-scientists-workshop/blob/main/week-05-evaluation/notebooks/02_benchmarks.ipynb) |
 | 03 | `03_custom_eval_harness.ipynb` | an assertion-based **regression suite** with a real safety check → a CI gate | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krmdel/agentic-ai-for-scientists-workshop/blob/main/week-05-evaluation/notebooks/03_custom_eval_harness.ipynb) |
 
+## Recording
+
+📹 **[Week 5 — Evaluation & Benchmarking (full session)](https://youtu.be/X5leGwZc7as)** — unlisted YouTube; anyone with the link can watch.
+
 ## API keys
 
 | Key | Required? | Free | Used by |

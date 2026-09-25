@@ -20,6 +20,10 @@ Each notebook's first cell installs its own dependencies. Run them **in order**,
 | 03 | `03_qlora.ipynb` | **QLoRA**, 4-bit NF4 base + LoRA → quantization + the 3-way comparison | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krmdel/agentic-ai-for-scientists-workshop/blob/main/week-04-post-training/notebooks/03_qlora.ipynb) |
 | 04 | `04_deploy_inference.ipynb` | Serve the tuned model: local / endpoint / on-device, latency vs cost vs privacy | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krmdel/agentic-ai-for-scientists-workshop/blob/main/week-04-post-training/notebooks/04_deploy_inference.ipynb) |
 
+## Recording
+
+📹 **[Week 4 — Post-Training & Deployment (full session)](https://youtu.be/2OdM-LEizOc)** — unlisted YouTube; anyone with the link can watch.
+
 ## API keys
 
 | Key | Required? | Free | Used by |
